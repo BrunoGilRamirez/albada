@@ -1,0 +1,1425 @@
+/**
+ * Albada — central design stylesheet.
+ *
+ * Normative contract: docs/ui-style-guide.md (Phase 8.5).
+ *
+ * Imported exactly once, from src/index.css. It holds:
+ *   1. `@theme` tokens (role colors, semantic status pairs, brand/Aurora,
+ *      breakpoints, radii, shadows).
+ *   2. Dark values through the existing `.dark` class contract owned by
+ *      src/lib/theme.tsx (untouched by this phase).
+ *   3. Base and global rules migrated from src/index.css.
+ *   4. Semantic `joi-*` component classes, plus the compositional role classes
+ *      (`.joi-text*`, `.joi-surface--*`, `.joi-border--*`, `.joi-dot*`,
+ *      `.joi-checkbox`) that let a screen select a color role instead of
+ *      composing a raw palette utility, and the `.joi-interactive` state helper
+ *      that restores hover/pressed fill on an otherwise ordinary element.
+ *
+ * Rules for this file:
+ *   - Role names only, never palette names (`--color-joi-canvas`, not
+ *     `--color-slate-50`). Values are written as literals so a token never
+ *     depends on another theme variable being emitted.
+ *   - Every color token declares a light and a dark value.
+ *   - No new spacing, radius, type, or shadow steps: only steps already in use
+ *     at baseline (guide Section 7).
+ *   - Control boundaries (field input/select/textarea, palette input, secondary
+ *     button) use `--color-joi-border-control`. `--color-joi-border` and
+ *     `--color-joi-border-strong` stay subdued and decorative: cards, panels,
+ *     dividers, and the `.joi-border--*` role classes. `--color-joi-border-focus`
+ *     is the focused-state border. Adding a class to the five approved
+ *     control-boundary classes is an L3 decision, not a stylesheet edit.
+ *   - The compositional role classes are color-only and take their dark value
+ *     from the token; they carry no `.dark` override.
+ *   - Primary actions stay neutral slate in both themes, including their
+ *     hover/active pointer states, which use the role tokens
+ *     `--color-joi-action-primary-hover` and
+ *     `--color-joi-action-primary-active`.
+ *   - Aurora accent tokens are theme-invariant: they carry the icon variant-5
+ *     colors in BOTH themes and are never overridden in `.dark`. Accessible
+ *     normal brand text uses the semantic `--color-joi-brand-text`, which is
+ *     the only brand role whose value differs per theme.
+ *   - `cyan-400` is decorative/graphic only: never text, never text on a light
+ *     surface.
+ *   - This phase is additive: no app TSX is migrated yet.
+ */
+
+/* -------------------------------------------------------------------------- */
+/* 1. Tokens                                                                   */
+/* -------------------------------------------------------------------------- */
+
+@theme {
+  /* -- Core role colors: light values (guide Section 3). ------------------ */
+  --color-joi-canvas: #f8fafc; /* slate-50 */
+  --color-joi-surface: #ffffff; /* white */
+  --color-joi-surface-raised: #f8fafc; /* slate-50 */
+  --color-joi-surface-sunken: #f1f5f9; /* slate-100 */
+  --color-joi-text: #0f172a; /* slate-900 */
+  --color-joi-text-muted: #64748b; /* slate-500 */
+  --color-joi-text-subtle: #64748b; /* slate-500 — corrected per guide */
+  --color-joi-text-inverse: #ffffff; /* white */
+  --color-joi-border: #e2e8f0; /* slate-200 — decorative separation only */
+  --color-joi-border-strong: #cbd5e1; /* slate-300 — decorative separation only */
+  --color-joi-border-control: #64748b; /* slate-500 — control boundary, 4.76:1 on white */
+  --color-joi-border-focus: #64748b; /* slate-500 — focused control border */
+  --color-joi-focus-ring: #64748b; /* slate-500 — 4.76:1 on white */
+
+  /* -- Primary action pointer states ------------------------------------- */
+  /* Role-based tokens for `.joi-btn--primary` hover/active. Neutral slate only
+     — pre-phase palette steps, no new hue. Ratified pairings:
+     white on `slate-900` 17.85:1, white on `slate-700` 10.35:1,
+     white on `slate-800` 14.63:1. */
+  --color-joi-action-primary-hover: #334155; /* slate-700 — 10.35:1 with white label */
+  --color-joi-action-primary-active: #1e293b; /* slate-800 — 14.63:1 with white label */
+
+  /* -- Brand: Aurora (guide Section 5) ------------------------------------ */
+  /* Canonical accent tokens: theme-invariant, identical to the icon
+     variant-5 colors in both themes. Never re-declared in `.dark`. */
+  --color-joi-brand-violet: #7c3aed; /* violet-600 */
+  --color-joi-brand-blue: #3b82f6; /* blue-500 — never normal-size text on white */
+  --color-joi-brand-cyan: #22d3ee; /* cyan-400 — decorative/graphic only */
+  --color-joi-brand-blue-strong: #2563eb; /* blue-600 — supporting/decorative only */
+  /* Only brand role allowed to differ per theme: normal-size brand text. */
+  --color-joi-brand-text: #2563eb; /* blue-600 — 5.17:1 on white */
+
+  /* -- Semantic status pairs: foreground / background / border ----------- */
+  --color-joi-success-fg: #047857; /* emerald-700, 5.21:1 on emerald-50 */
+  --color-joi-success-bg: #ecfdf5; /* emerald-50 */
+  --color-joi-success-border: #a7f3d0; /* emerald-200 */
+  --color-joi-warning-fg: #92400e; /* amber-800, 6.84:1 on amber-50 */
+  --color-joi-warning-bg: #fffbeb; /* amber-50 */
+  --color-joi-warning-border: #fde68a; /* amber-200 */
+  --color-joi-danger-fg: #b91c1c; /* red-700, 5.91:1 on red-50 */
+  --color-joi-danger-bg: #fef2f2; /* red-50 */
+  --color-joi-danger-border: #fecaca; /* red-200 */
+  --color-joi-caution-fg: #9a3412; /* orange-800, 6.88:1 on orange-50 */
+  --color-joi-caution-bg: #fff7ed; /* orange-50 */
+  --color-joi-caution-border: #fed7aa; /* orange-200 */
+  --color-joi-info-fg: #1d4ed8; /* blue-700, 6.16:1 on blue-50 */
+  --color-joi-info-bg: #eff6ff; /* blue-50 */
+  --color-joi-info-border: #bfdbfe; /* blue-200 */
+
+  /* -- Brand gradient, 145deg: top-left to bottom-right ------------------ */
+  --joi-brand-gradient: linear-gradient(145deg, #7c3aed 0%, #3b82f6 50%, #22d3ee 100%);
+
+  /* -- Structural tokens (existing baseline steps only) ------------------ */
+  --radius-joi-control: 0.375rem; /* rounded-md */
+  --radius-joi-surface: 0.5rem; /* rounded-lg */
+  --radius-joi-overlay: 0.75rem; /* rounded-xl */
+  --radius-joi-pill: 9999px; /* rounded-full */
+
+  --shadow-joi-toast:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* shadow-lg */
+  --shadow-joi-dialog:
+    0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); /* shadow-xl */
+
+  /* -- Overlay scrim. Not a palette choice, so it stays a plain token. --- */
+  --joi-scrim: rgb(2 6 23 / 0.5);
+
+  /* -- Project breakpoints (guide Section 10) ---------------------------- */
+  --breakpoint-3xl: 120rem;
+  --breakpoint-4xl: 160rem;
+}
+
+/* Dark values. Declared on `.dark` so they override the light `@theme` values
+   from the single definition site above. `src/lib/theme.tsx` owns the class and
+   is not modified by this phase. */
+.dark {
+  --color-joi-canvas: #020617; /* slate-950 */
+  --color-joi-surface: #0f172a; /* slate-900 */
+  --color-joi-surface-raised: #1e293b; /* slate-800 */
+  --color-joi-surface-sunken: #020617; /* slate-950 */
+  --color-joi-text: #f1f5f9; /* slate-100 */
+  --color-joi-text-muted: #94a3b8; /* slate-400 */
+  --color-joi-text-subtle: #94a3b8; /* slate-400 */
+  --color-joi-text-inverse: #0f172a; /* slate-900 */
+  --color-joi-border: #1e293b; /* slate-800 */
+  --color-joi-border-strong: #334155; /* slate-700 */
+  --color-joi-border-control: #94a3b8; /* slate-400 — control boundary, 6.96:1 on slate-900 */
+  --color-joi-border-focus: #94a3b8; /* slate-400 — focused control border */
+  --color-joi-focus-ring: #94a3b8; /* slate-400 — 7.87:1 on slate-950 */
+
+  /* Primary action pointer states stay on the same neutral slate family, reversed
+     for dark: `slate-900` label on `slate-100` base 16.30:1, on `slate-300` hover
+     12.02:1, on `slate-200` active 14.48:1. */
+  --color-joi-action-primary-hover: #cbd5e1; /* slate-300 — 12.02:1 with slate-900 label */
+  --color-joi-action-primary-active: #e2e8f0; /* slate-200 — 14.48:1 with slate-900 label */
+
+  /* Aurora accents are deliberately absent here: the canonical accent tokens
+     and `--joi-brand-gradient` are theme-invariant (icon variant-5 colors) and
+     must not be re-tinted for dark. Only accessible brand text is per-theme. */
+  --color-joi-brand-text: #60a5fa; /* blue-400 — 7.02:1 on slate-900, 5.75:1 on slate-800 */
+
+  --color-joi-success-fg: #6ee7b7; /* emerald-300, 9.94:1 on emerald-950 */
+  --color-joi-success-bg: #022c22; /* emerald-950 */
+  --color-joi-success-border: #065f46; /* emerald-800 */
+  --color-joi-warning-fg: #fcd34d; /* amber-300, 10.39:1 on amber-950 */
+  --color-joi-warning-bg: #451a03; /* amber-950 */
+  --color-joi-warning-border: #92400e; /* amber-800 */
+  --color-joi-danger-fg: #fca5a5; /* red-300, 8.51:1 on red-950 */
+  --color-joi-danger-bg: #450a0a; /* red-950 */
+  --color-joi-danger-border: #991b1b; /* red-800 */
+  --color-joi-caution-fg: #fdba74; /* orange-300, 9.28:1 on orange-950 */
+  --color-joi-caution-bg: #431407; /* orange-950 */
+  --color-joi-caution-border: #9a3412; /* orange-800 */
+  --color-joi-info-fg: #93c5fd; /* blue-300, 8.15:1 on blue-950 */
+  --color-joi-info-bg: #172554; /* blue-950 */
+  --color-joi-info-border: #1e40af; /* blue-800 */
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Base and global layer                                                    */
+/* -------------------------------------------------------------------------- */
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  /* Startup splash markup and its critical first-paint styles stay inlined in
+     index.html; only the post-mount scroll lock lives here. */
+  html.joi-booting,
+  html.joi-booting body {
+    overflow: hidden;
+  }
+
+  /* Canvas of the app shell (layout.tsx): removing the splash can never expose
+     a white or mismatched frame while React takes over. References the canvas
+     token instead of re-declaring palette fallbacks. */
+  body {
+    background-color: var(--color-joi-canvas);
+    color: var(--color-joi-text);
+  }
+
+  .dark body {
+    background-color: var(--color-joi-canvas);
+    color: var(--color-joi-text);
+  }
+
+  img,
+  video,
+  table,
+  pre {
+    max-width: 100%;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  /* Ratified focus baseline: neutral slate, 2px solid, 2px offset, on every
+     keyboard-focusable element. Kept in the base layer so this phase stays
+     additive: it establishes the contract, while a `focus:outline-none`
+     utility still present in un-migrated TSX continues to win until that screen
+     is migrated to a `.joi-*` control class in 8.5.3/8.5.4. Nothing here
+     suppresses focus. */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-joi-focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* Reduced-motion baseline for every transition and animation introduced or
+     normalized here, including overlay enter transitions and the highlight
+     target. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Root font-size steps. Both are existing steps. */
+@media (min-width: 2560px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 3200px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Semantic component classes                                               */
+/* -------------------------------------------------------------------------- */
+
+@layer components {
+  /* -- Page -------------------------------------------------------------- */
+
+  .joi-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: var(--color-joi-text);
+  }
+
+  .joi-page__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .joi-page__title {
+    font-size: 1.5rem; /* text-2xl */
+    line-height: 2rem;
+    font-weight: 700;
+    color: var(--color-joi-text);
+  }
+
+  .joi-page__subtitle {
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    color: var(--color-joi-text-muted);
+  }
+
+  .joi-page__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .joi-page__section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .joi-page__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  .joi-route-transition {
+    animation: joi-route-enter 180ms ease-out both;
+  }
+
+  @keyframes joi-route-enter {
+    from {
+      opacity: 0;
+      transform: translateY(0.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .joi-skeleton-page {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+  }
+
+  .joi-skeleton-page__visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .joi-skeleton-page__crumbs,
+  .joi-skeleton-page__heading,
+  .joi-skeleton-page__actions,
+  .joi-skeleton-page__badges,
+  .joi-skeleton-page__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .joi-skeleton-page__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .joi-skeleton-page__form,
+  .joi-skeleton-page__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .joi-skeleton-page__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .joi-skeleton {
+    width: 100%;
+    height: 1rem;
+    border-radius: 0.375rem;
+    background: linear-gradient(
+      90deg,
+      var(--color-joi-surface-raised) 25%,
+      var(--color-joi-border) 50%,
+      var(--color-joi-surface-raised) 75%
+    );
+    background-size: 200% 100%;
+    animation: joi-skeleton-shimmer 1.4s ease-in-out infinite;
+  }
+
+  .joi-skeleton--title {
+    width: min(18rem, 70%);
+    height: 2rem;
+  }
+
+  .joi-skeleton--short {
+    width: min(12rem, 50%);
+  }
+
+  .joi-skeleton--crumb {
+    width: 5rem;
+    height: 1.75rem;
+  }
+
+  .joi-skeleton--crumb-short,
+  .joi-skeleton--button-short,
+  .joi-skeleton--badge-short {
+    width: 4rem;
+  }
+
+  .joi-skeleton--badge {
+    width: 5rem;
+    height: 1.5rem;
+  }
+
+  .joi-skeleton--button {
+    width: 6rem;
+    height: 2.25rem;
+  }
+
+  .joi-skeleton--field-label {
+    width: 7rem;
+    height: 0.75rem;
+  }
+
+  .joi-skeleton--field {
+    height: 2.5rem;
+  }
+
+  .joi-skeleton--field-large {
+    height: 8rem;
+  }
+
+  .joi-skeleton--control {
+    width: 9rem;
+    height: 2.5rem;
+  }
+
+  .joi-skeleton--card {
+    height: 12rem;
+  }
+
+  .joi-skeleton--panel {
+    height: 6rem;
+  }
+
+  .joi-skeleton--panel-tall {
+    height: 12rem;
+  }
+
+  @keyframes joi-skeleton-shimmer {
+    from {
+      background-position: 100% 0;
+    }
+    to {
+      background-position: -100% 0;
+    }
+  }
+
+  /* -- Shell and navigation --------------------------------------------- */
+
+  .joi-shell {
+    display: flex;
+    min-height: 100dvh;
+    background-color: var(--color-joi-canvas);
+    color: var(--color-joi-text);
+  }
+
+  .joi-shell__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--color-joi-surface);
+    border-right: 1px solid var(--color-joi-border);
+  }
+
+  .joi-shell__main {
+    flex: 1 1 0%;
+    min-width: 0;
+  }
+
+  .joi-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .joi-nav__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-left: 2px solid transparent;
+    border-radius: var(--radius-joi-control);
+    padding: 0.375rem 0.5rem;
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    color: var(--color-joi-text-muted);
+    text-decoration: none;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease;
+  }
+
+  .joi-nav__item:hover {
+    background-color: var(--color-joi-surface-raised);
+    color: var(--color-joi-text);
+  }
+
+  .joi-nav__item:active {
+    background-color: var(--color-joi-surface-sunken);
+  }
+
+  /* Selected state: background, weight, border and ARIA together, so the brand
+     indicator is never the only cue. */
+  .joi-nav__item--active,
+  .joi-nav__item[aria-current="page"],
+  .joi-nav__item[aria-current="true"] {
+    background-color: var(--color-joi-surface-raised);
+    border-left-color: var(--color-joi-brand-violet);
+    color: var(--color-joi-text);
+    font-weight: 500;
+  }
+
+  .joi-nav__item[aria-disabled="true"] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .joi-nav__indicator {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: var(--radius-joi-pill);
+    background-image: var(--joi-brand-gradient);
+  }
+
+  .joi-breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem; /* text-xs */
+    line-height: 1rem;
+    color: var(--color-joi-text-muted);
+  }
+
+  .joi-breadcrumb__item {
+    border-radius: var(--radius-joi-control);
+    padding: 0.125rem 0.25rem;
+    font-size: inherit;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .joi-breadcrumb__item:hover {
+    background-color: var(--color-joi-surface-raised);
+    color: var(--color-joi-text);
+  }
+
+  .joi-breadcrumb__item--active,
+  .joi-breadcrumb__item[aria-current="page"] {
+    color: var(--color-joi-text);
+    font-weight: 500;
+  }
+
+  /* -- Surfaces ---------------------------------------------------------- */
+
+  .joi-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    background-color: var(--color-joi-surface);
+    border: 1px solid var(--color-joi-border);
+    border-radius: var(--radius-joi-surface);
+    color: var(--color-joi-text);
+  }
+
+  .joi-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .joi-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .joi-card__footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-joi-border);
+  }
+
+  .joi-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    background-color: var(--color-joi-surface-raised);
+    border: 1px solid var(--color-joi-border);
+    border-radius: var(--radius-joi-surface);
+    color: var(--color-joi-text);
+  }
+
+  .joi-divider {
+    margin: 0;
+    border: 0;
+    border-top: 1px solid var(--color-joi-border-strong);
+  }
+
+  /* -- Compositional classes: text, surface, border, indicator, checkbox ---- */
+
+  /* Why this block exists. Most palette residue in TSX is not a component: it is
+     a color role applied to an otherwise ordinary element — a muted subtitle, a
+     `bg-white dark:bg-slate-900` row, a `border-slate-200` wrapper, a colored
+     `h-2 w-2 rounded-full` legend dot. These classes cover exactly those roles so
+     a screen selects a role instead of composing a palette utility, without
+     inventing any color or shade.
+
+     Contract for this block:
+       - Ratified role tokens only. No new token, no new color, no new shade.
+       - No `.dark` branch anywhere in this block. Dark support comes exclusively
+         from the tokens, which already declare a light and a dark value, and a
+         dark override that restates a value a token owns is a contract failure.
+       - `.joi-text*`, `.joi-surface--*`, and `.joi-border--*` set color only: no
+         margin, padding, size, font, radius, or border width. Layout and
+         typography stay in the preserved Tailwind utilities (guide Section 9).
+       - `.joi-border--*` is decorative separation only. Neither class carries
+         `--color-joi-border-control`, which stays limited to its five approved
+         classes. A control that needs a visible boundary uses the approved
+         control class, never a border-role class.
+       - Selecting one of these classes is not permission to add a palette
+         utility next to it. */
+
+  /* Text roles. `.joi-text` is the primary text role. */
+
+  .joi-text {
+    color: var(--color-joi-text);
+  }
+
+  .joi-text--muted {
+    color: var(--color-joi-text-muted);
+  }
+
+  .joi-text--subtle {
+    color: var(--color-joi-text-subtle);
+  }
+
+  .joi-text--inverse {
+    color: var(--color-joi-text-inverse);
+  }
+
+  /* Brand text takes the semantic per-theme role. Never the canonical accents:
+     `--color-joi-brand-blue` measures 3.68:1 on white (fail) and
+     `--color-joi-brand-cyan` is never text. Because `--color-joi-brand-text` is
+     per-theme, this class carries no `.dark` override of its own. */
+  .joi-text--brand {
+    color: var(--color-joi-brand-text);
+  }
+
+  /* Status text takes each approved `-fg` role — the same foregrounds already
+     used by `.joi-badge--*`, `.joi-alert--*`, and `.joi-toast--*`, so a status
+     reads identically whether it is a bare text node or a filled chip. */
+
+  .joi-text--success {
+    color: var(--color-joi-success-fg);
+  }
+
+  .joi-text--warning {
+    color: var(--color-joi-warning-fg);
+  }
+
+  .joi-text--danger {
+    color: var(--color-joi-danger-fg);
+  }
+
+  /* `blocked_risk` keeps its distinct orange caution role. */
+  .joi-text--caution {
+    color: var(--color-joi-caution-fg);
+  }
+
+  .joi-text--info {
+    color: var(--color-joi-info-fg);
+  }
+
+  /* Surface roles: the semantic background plus the primary text that sits on
+     it, so a migrated row does not also need a `.joi-text`. The `--color-joi-text`
+     pairing is the one already measured in the guide (17.85:1 on
+     `--color-joi-surface` in light, 16.30:1 in dark); the canvas, raised, and
+     sunken pairings clear 4.5:1 as well. Background and text only: padding,
+     radius, and borders stay with the component class or the preserved layout
+     utilities. */
+
+  .joi-surface--canvas {
+    background-color: var(--color-joi-canvas);
+    color: var(--color-joi-text);
+  }
+
+  .joi-surface--base {
+    background-color: var(--color-joi-surface);
+    color: var(--color-joi-text);
+  }
+
+  .joi-surface--raised {
+    background-color: var(--color-joi-surface-raised);
+    color: var(--color-joi-text);
+  }
+
+  .joi-surface--sunken {
+    background-color: var(--color-joi-surface-sunken);
+    color: var(--color-joi-text);
+  }
+
+  /* Decorative borders. Color only: `border` / `border-2` stays in TSX because
+     border widths are not part of the token set (guide Section 7). Both roles are
+     subdued by contract — 1.48:1 and 1.72:1 — so neither may stand in for a
+     control boundary. */
+
+  .joi-border--default {
+    border-color: var(--color-joi-border);
+  }
+
+  .joi-border--strong {
+    border-color: var(--color-joi-border-strong);
+  }
+
+  /* Category and state indicators: calendar legend dots, list leading markers,
+     status marks. Geometry is self-contained so nothing is inherited from a
+     parent, and it uses the same ratified step as `.joi-nav__indicator`
+     (0.5rem square, pill radius); `flex: 0 0 auto` keeps a dot from being
+     squeezed inside a flex or grid row. Spacing stays in the preserved `gap-*`
+     utilities, and modifiers add color only.
+
+     The `-fg` roles are used rather than the `-bg` roles because the tinted
+     status backgrounds are far too light to read as a mark; every role used
+     here is a dark-mode-qualified foreground that also measures at least 3:1 as
+     a non-text indicator on the light and dark shell surfaces.
+
+     `.joi-dot` defaults to the neutral shell role so a lone dot is never
+     invisible; a dot that carries meaning names its role explicitly with
+     `--neutral` or a status modifier.
+
+     A dot is never the only cue: it is always paired with a visible label, icon,
+     or ARIA text in JSX, and the dot element itself is `aria-hidden="true"`. */
+
+  .joi-dot {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: var(--radius-joi-pill);
+    background-color: var(--color-joi-text-muted);
+  }
+
+  .joi-dot--neutral {
+    background-color: var(--color-joi-text-muted);
+  }
+
+  .joi-dot--info {
+    background-color: var(--color-joi-info-fg);
+  }
+
+  .joi-dot--warning {
+    background-color: var(--color-joi-warning-fg);
+  }
+
+  .joi-dot--danger {
+    background-color: var(--color-joi-danger-fg);
+  }
+
+  .joi-dot--success {
+    background-color: var(--color-joi-success-fg);
+  }
+
+  /* Native checkbox and radio. One `accent-color` tints the control from the
+     primary text role in both themes, replacing the per-theme palette
+     `accent-*` utilities. No border role is applied: a native control keeps the
+     platform's own indicator, so the control-boundary rule — which governs
+     app-drawn outlines — does not apply here. */
+
+  .joi-checkbox {
+    accent-color: var(--color-joi-text);
+    cursor: pointer;
+  }
+
+  /* The base layer already draws the ratified ring on every focusable element.
+     It is restated here to keep the semantic control contract explicit. A
+     Tailwind `focus:outline-none` utility may override it in the later utilities
+     layer, so every such utility must be removed during migration. */
+  .joi-checkbox:focus-visible {
+    outline: 2px solid var(--color-joi-focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* Same disabled baseline as `.joi-btn`: the `disabled` attribute is required;
+     styling alone is not enough. */
+  .joi-checkbox:disabled,
+  .joi-checkbox[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Interactive state helper. This is the one member of the compositional family
+     that expresses a pointer state, and it exists because migration removed
+     hover/pressed feedback from elements that are neither `.joi-btn*` nor a form
+     control: a linked calendar day cell, a reorder arrow, a menu option row. Those
+     elements must not be promoted to a control class just to get feedback, and a
+     `hover:bg-*` palette utility is residue by contract.
+
+     Contract:
+       - Color and transition only. No margin, padding, size, font, radius, border
+         width, cursor, or transform is declared, so adding it can never move a
+         pixel of layout. Any geometry already on the element stays untouched.
+       - Ratified tokens only: `--color-joi-surface-raised` on hover and
+         `--color-joi-surface-sunken` while pressed. No new token, no new shade, no
+         `.dark` branch — the dark values come from the tokens.
+       - Disabled means `:disabled` **and** `[aria-disabled="true"]`; neither state
+         gets feedback, so a disabled control cannot look pressable.
+       - Focus is inherited from the base-layer `:focus-visible` ring. `outline` is
+         never set here, so nothing can suppress it.
+       - It is not a control boundary: no border role is applied, so
+         `--color-joi-border-control` stays limited to its five approved classes.
+       - It composes with a `.joi-surface--*` role on the same element. The state
+         background only exists while hovered or pressed, so the resting fill still
+         belongs to the surface role. */
+  .joi-interactive {
+    transition: background-color 150ms ease;
+  }
+
+  .joi-interactive:hover:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-joi-surface-raised);
+  }
+
+  .joi-interactive:active:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-joi-surface-sunken);
+  }
+
+  /* -- Buttons ----------------------------------------------------------- */
+
+  .joi-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-joi-control);
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease,
+      box-shadow 150ms ease,
+      color 150ms ease;
+  }
+
+  .joi-btn:disabled,
+  .joi-btn[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Primary: neutral slate in BOTH themes. Brand is excluded by contract. The base
+     fill is `--color-joi-text` and the label `--color-joi-text-inverse`, so the
+     theme inversion comes from the tokens rather than a `.dark` branch; no raw
+     hex is restated here. Pointer states use the role tokens
+     `--color-joi-action-primary-hover` / `-active`, which are also per-theme, so
+     the hover/active pairs need no `.dark` override of their own. */
+  .joi-btn--primary {
+    background-color: var(--color-joi-text);
+    border-color: var(--color-joi-text);
+    color: var(--color-joi-text-inverse);
+  }
+
+  .joi-btn--primary:hover:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-joi-action-primary-hover);
+    border-color: var(--color-joi-action-primary-hover);
+  }
+
+  .joi-btn--primary:active:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-joi-action-primary-active);
+    border-color: var(--color-joi-action-primary-active);
+  }
+
+  .joi-btn--secondary {
+    background-color: var(--color-joi-surface);
+    border-color: var(--color-joi-border-control);
+    color: var(--color-joi-text);
+  }
+
+  .joi-btn--secondary:hover:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-joi-surface-raised);
+    border-color: var(--color-joi-border-focus);
+  }
+
+  .joi-btn--secondary:active:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-joi-surface-sunken);
+  }
+
+  /* Selected state for a secondary toggle group (e.g. a list-layout
+     switcher). `aria-pressed` stays the authoritative state; this only adds
+     the visual cue, so it never depends on hover. Ratified tokens only —
+     `--color-joi-surface-sunken` for the fill and `--color-joi-border-focus`
+     for the border; no new token, no raw shade, no `.dark` branch. `outline`
+     is never touched, so the base-layer focus ring stays visible. Color and
+     border only, so no layout can move, and the transition itself comes from
+     `.joi-btn` (already covered by the reduced-motion guard at the top of
+     this file), so no extra transition is declared here. */
+  .joi-btn--secondary[aria-pressed="true"] {
+    background-color: var(--color-joi-surface-sunken);
+    border-color: var(--color-joi-border-focus);
+  }
+
+  /* Layout switcher assets use `currentColor`, but an external SVG loaded by
+     `<img>` cannot inherit it. Keep the theme-specific icon treatment here so
+     screens only select the semantic icon class. */
+  .joi-layout-icon {
+    width: 1rem;
+    height: 1rem;
+    filter: brightness(0) saturate(100%);
+  }
+
+  .dark .joi-layout-icon {
+    filter: brightness(0) saturate(100%) invert(1);
+  }
+
+  .joi-btn--ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-joi-text-muted);
+  }
+
+  .joi-btn--ghost:hover:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-joi-surface-raised);
+    color: var(--color-joi-text);
+  }
+
+  .joi-btn--ghost:active:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-joi-surface-sunken);
+    color: var(--color-joi-text);
+  }
+
+  /* Destructive: danger role, never brand-tinted. Hover and active keep the
+     approved danger fg/bg/inverse-text pairing in BOTH themes — no raw red shade
+     override is allowed, because a shade outside the pairing breaks the measured
+     text contrast (dark `red-600` with inverse `slate-900` text is 3.70:1, below
+     4.5:1). Feedback is expressed without new color decisions: an inset ring on
+     hover/active plus a 1px press translation on active. The inset ring uses
+     `--color-joi-danger-border` rather than `--color-joi-danger-fg` because the
+     fill IS `--color-joi-danger-fg`, so an inset ring in that token would be
+     invisible. `outline` is never touched, so the focus ring stays intact. */
+  .joi-btn--danger {
+    background-color: var(--color-joi-danger-fg);
+    border-color: var(--color-joi-danger-fg);
+    color: var(--color-joi-text-inverse);
+  }
+
+  .joi-btn--danger:hover:not(:disabled):not([aria-disabled="true"]),
+  .joi-btn--danger:active:not(:disabled):not([aria-disabled="true"]) {
+    box-shadow: inset 0 0 0 2px var(--color-joi-danger-border);
+  }
+
+  .joi-btn--danger:active:not(:disabled):not([aria-disabled="true"]) {
+    transform: translateY(1px);
+  }
+
+  .joi-btn--sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem; /* text-xs */
+    line-height: 1rem;
+  }
+
+  .joi-btn--block {
+    display: flex;
+    width: 100%;
+  }
+
+  /* -- Fields ------------------------------------------------------------ */
+
+  .joi-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    min-width: 0;
+  }
+
+  .joi-field__label {
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: var(--color-joi-text);
+  }
+
+  .joi-field__input,
+  .joi-field__select,
+  .joi-field__textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--color-joi-surface);
+    border: 1px solid var(--color-joi-border-control);
+    border-radius: var(--radius-joi-surface);
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    color: var(--color-joi-text);
+  }
+
+  .joi-field__input::placeholder,
+  .joi-field__select::placeholder,
+  .joi-field__textarea::placeholder {
+    color: var(--color-joi-text-subtle);
+  }
+
+  .joi-field__input:hover:not(:disabled),
+  .joi-field__select:hover:not(:disabled),
+  .joi-field__textarea:hover:not(:disabled) {
+    border-color: var(--color-joi-border-focus);
+  }
+
+  .joi-field__input:focus-visible,
+  .joi-field__select:focus-visible,
+  .joi-field__textarea:focus-visible {
+    border-color: var(--color-joi-border-focus);
+    outline: 2px solid var(--color-joi-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .joi-field__input:disabled,
+  .joi-field__select:disabled,
+  .joi-field__textarea:disabled {
+    background-color: var(--color-joi-surface-sunken);
+    color: var(--color-joi-text-subtle);
+    cursor: not-allowed;
+  }
+
+  .joi-field__input[aria-invalid="true"],
+  .joi-field__select[aria-invalid="true"],
+  .joi-field__textarea[aria-invalid="true"] {
+    /* Preserve the accessible control boundary while adding a distinct error
+       cue. The danger foreground has text-level contrast on these surfaces. */
+    box-shadow: inset 0 0 0 1px var(--color-joi-danger-fg);
+  }
+
+  .joi-field__help {
+    font-size: 0.75rem; /* text-xs */
+    line-height: 1rem;
+    color: var(--color-joi-text-muted);
+  }
+
+  .joi-field__error {
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    color: var(--color-joi-danger-fg);
+  }
+
+  /* -- Badges ------------------------------------------------------------ */
+
+  .joi-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-joi-pill);
+    font-size: 0.75rem; /* text-xs */
+    line-height: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .joi-badge--neutral {
+    background-color: var(--color-joi-surface-sunken);
+    border-color: var(--color-joi-border);
+    color: var(--color-joi-text-muted);
+  }
+
+  .joi-badge--success {
+    background-color: var(--color-joi-success-bg);
+    border-color: var(--color-joi-success-border);
+    color: var(--color-joi-success-fg);
+  }
+
+  .joi-badge--warning {
+    background-color: var(--color-joi-warning-bg);
+    border-color: var(--color-joi-warning-border);
+    color: var(--color-joi-warning-fg);
+  }
+
+  .joi-badge--danger {
+    background-color: var(--color-joi-danger-bg);
+    border-color: var(--color-joi-danger-border);
+    color: var(--color-joi-danger-fg);
+  }
+
+  /* `blocked_risk` keeps the distinct orange caution presentation role. */
+  .joi-badge--caution {
+    background-color: var(--color-joi-caution-bg);
+    border-color: var(--color-joi-caution-border);
+    color: var(--color-joi-caution-fg);
+  }
+
+  .joi-badge--info {
+    background-color: var(--color-joi-info-bg);
+    border-color: var(--color-joi-info-border);
+    color: var(--color-joi-info-fg);
+  }
+
+  /* Brand badge: accent border plus accessible brand text. The border stays the
+     canonical violet accent (theme-invariant); the text uses the semantic
+     `--color-joi-brand-text`, so no dark override is needed. Never cyan text,
+     and the state must still be recoverable from text, icon, border, or ARIA. */
+  .joi-badge--brand {
+    background-color: var(--color-joi-surface-sunken);
+    border-color: var(--color-joi-brand-violet);
+    color: var(--color-joi-brand-text);
+  }
+
+  /* -- Alerts ------------------------------------------------------------ */
+
+  .joi-alert {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-joi-surface);
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+  }
+
+  .joi-alert--error {
+    background-color: var(--color-joi-danger-bg);
+    border-color: var(--color-joi-danger-border);
+    color: var(--color-joi-danger-fg);
+  }
+
+  .joi-alert--success {
+    background-color: var(--color-joi-success-bg);
+    border-color: var(--color-joi-success-border);
+    color: var(--color-joi-success-fg);
+  }
+
+  .joi-alert--warning {
+    background-color: var(--color-joi-warning-bg);
+    border-color: var(--color-joi-warning-border);
+    color: var(--color-joi-warning-fg);
+  }
+
+  .joi-alert--info {
+    background-color: var(--color-joi-info-bg);
+    border-color: var(--color-joi-info-border);
+    color: var(--color-joi-info-fg);
+  }
+
+  /* -- Empty and loading -------------------------------------------------- */
+
+  .joi-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .joi-empty__state,
+  .joi-empty__loading {
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    font-style: italic;
+    color: var(--color-joi-text-subtle);
+  }
+
+  /* -- Progress ----------------------------------------------------------- */
+
+  .joi-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+
+  .joi-progress__track {
+    width: 100%;
+    height: 0.5rem;
+    overflow: hidden;
+    background-color: var(--color-joi-surface-sunken);
+    border-radius: var(--radius-joi-pill);
+  }
+
+  /* Non-urgent progress fill (brand allowlist). Urgent and deadline
+     presentations must use a semantic role instead. */
+  .joi-progress__fill {
+    height: 100%;
+    background-image: var(--joi-brand-gradient);
+    border-radius: var(--radius-joi-pill);
+  }
+
+  /* -- Markdown ----------------------------------------------------------- */
+
+  /* Normalization wrapper only. The typography plugin stays active and TSX keeps
+     `prose prose-sm max-w-none dark:prose-invert`; nothing here alters stored or
+     exported Markdown source. */
+  .joi-markdown {
+    color: var(--color-joi-text);
+  }
+
+  /* -- Tree --------------------------------------------------------------- */
+
+  .joi-tree {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .joi-tree__row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0.25rem 0;
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    color: var(--color-joi-text);
+  }
+
+  .joi-tree__row:hover {
+    background-color: var(--color-joi-surface-raised);
+  }
+
+  .joi-tree__row[aria-selected="true"] {
+    background-color: var(--color-joi-surface-sunken);
+    font-weight: 500;
+  }
+
+  .joi-tree__indent {
+    flex: 0 0 auto;
+    /* Depth indentation stays a dynamic inline `style` value (guide Section 14);
+       this class only owns the base step and the guide rail. */
+    padding-left: 0.75rem;
+    border-left: 1px solid var(--color-joi-border);
+  }
+
+  /* -- Overlays: dialog, palette, toast ----------------------------------- */
+
+  .joi-dialog__backdrop {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: var(--joi-scrim);
+  }
+
+  .joi-dialog {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+
+  .joi-dialog__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 32rem;
+    padding: 1.25rem;
+    background-color: var(--color-joi-surface);
+    border: 1px solid var(--color-joi-border);
+    border-radius: var(--radius-joi-overlay);
+    box-shadow: var(--shadow-joi-dialog);
+    color: var(--color-joi-text);
+    animation: joi-overlay-enter 150ms ease-out;
+  }
+
+  .joi-dialog__panel:focus-visible,
+  .joi-palette:focus-visible,
+  .joi-toast:focus-visible {
+    outline: 2px solid var(--color-joi-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .joi-dialog__title {
+    font-size: 1.125rem; /* text-lg */
+    line-height: 1.75rem;
+    font-weight: 600;
+    color: var(--color-joi-text);
+  }
+
+  .joi-dialog__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-joi-border);
+  }
+
+  .joi-palette {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--color-joi-surface);
+    border: 1px solid var(--color-joi-border);
+    border-radius: var(--radius-joi-overlay);
+    box-shadow: var(--shadow-joi-dialog);
+    color: var(--color-joi-text);
+    animation: joi-overlay-enter 150ms ease-out;
+  }
+
+  .joi-palette__input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--color-joi-surface-raised);
+    border: 1px solid var(--color-joi-border-control);
+    border-radius: var(--radius-joi-surface);
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    color: var(--color-joi-text);
+  }
+
+  .joi-palette__input::placeholder {
+    color: var(--color-joi-text-subtle);
+  }
+
+  .joi-palette__input:hover:not(:disabled) {
+    border-color: var(--color-joi-border-focus);
+  }
+
+  .joi-palette__input:focus-visible {
+    border-color: var(--color-joi-border-focus);
+    outline: 2px solid var(--color-joi-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .joi-palette__hint {
+    font-size: 0.75rem; /* text-xs */
+    line-height: 1rem;
+    color: var(--color-joi-text-muted);
+  }
+
+  .joi-toast {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0.75rem;
+    background-color: var(--color-joi-surface);
+    border: 1px solid var(--color-joi-border);
+    border-radius: var(--radius-joi-surface);
+    box-shadow: var(--shadow-joi-toast);
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    color: var(--color-joi-text);
+    animation: joi-overlay-enter 150ms ease-out;
+  }
+
+  .joi-toast--error {
+    background-color: var(--color-joi-danger-bg);
+    border-color: var(--color-joi-danger-border);
+    color: var(--color-joi-danger-fg);
+  }
+
+  .joi-toast--success {
+    background-color: var(--color-joi-success-bg);
+    border-color: var(--color-joi-success-border);
+    color: var(--color-joi-success-fg);
+  }
+
+  .joi-toast--warning {
+    background-color: var(--color-joi-warning-bg);
+    border-color: var(--color-joi-warning-border);
+    color: var(--color-joi-warning-fg);
+  }
+
+  .joi-toast--info {
+    background-color: var(--color-joi-info-bg);
+    border-color: var(--color-joi-info-border);
+    color: var(--color-joi-info-fg);
+  }
+
+  @keyframes joi-overlay-enter {
+    from {
+      opacity: 0;
+      transform: translateY(0.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* -- Highlight target ---------------------------------------------------- */
+
+  /* Approved warning (amber) role instead of a raw amber RGB literal. The legacy
+     hook name stays as an alias so un-migrated TSX keeps working with identical
+     behavior, and the reduced-motion guard covers both selectors. */
+  .joi-highlight-target,
+  .notification-target-highlight {
+    outline: 3px solid var(--color-joi-warning-fg);
+    outline-offset: 4px;
+    transition: outline-color 150ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .joi-highlight-target,
+    .notification-target-highlight {
+      transition: none;
+    }
+  }
+}

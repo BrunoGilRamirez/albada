@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://joi-projectlife.local/schemas/journal-template-common-fields.json",
+  "title": "JOI common journal fields",
+  "type": "object",
+  "required": ["entry.emotions", "entry.mood", "entry.energy"],
+  "properties": {
+    "entry.emotions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "entry.mood": { "type": "string" },
+    "entry.energy": { "type": "integer", "minimum": 1, "maximum": 10 }
+  },
+  "additionalProperties": true
+}

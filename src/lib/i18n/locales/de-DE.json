@@ -1,0 +1,1151 @@
+{
+  "settings": {
+    "language": {
+      "label": "Sprache",
+      "description": "Wählen Sie die Anwendungssprache. System folgt der Windows-Sprache; nichts verlässt dieses Gerät.",
+      "system": "System",
+      "en-US": "English (United States)",
+      "es-ES": "Español (España)",
+      "de-DE": "Deutsch (Deutschland)",
+      "fr-FR": "Français (France)",
+      "saved": "Spracheinstellung gespeichert. Die App verwendet jetzt {{language}}."
+    },
+    "title": "Einstellungen",
+    "subtitle": "Arbeitsbereichseinstellungen, archivierte Aufgaben und Sicherungen.",
+    "sections": {
+      "aria": "Einstellungsbereiche",
+      "commitments": "Feste Termine",
+      "availability": "Verfügbarkeit",
+      "import": "Legacy-Import",
+      "notifications": "Benachrichtigungen"
+    },
+    "workspace": {
+      "label": "Arbeitsbereich",
+      "value": "Arbeitsbereich {{id}}…"
+    },
+    "warningWindow": {
+      "label": "Fristwarnfenster",
+      "help": "Wie viele Tage vor einer Frist eine Aufgabe als bevorstehend gilt. Zwischen 0 und 90. Derzeit {{days}} Tage.",
+      "invalid": "Das Warnfenster muss zwischen 0 und 90 Tagen liegen.",
+      "saved": "Fristwarnfenster auf {{days}} Tage gesetzt."
+    },
+    "archived": {
+      "title": "Archivierte Aufgaben",
+      "help": "Mit „Teilbaum archivieren“ ausgeblendete Aufgaben erscheinen hier, damit Sie sie wiederherstellen können.",
+      "empty": "Keine archivierten Aufgaben.",
+      "restored": "Aufgabe wiederhergestellt."
+    },
+    "backups": {
+      "title": "Sicherungen",
+      "help": "Sicherungen können sensible Daten enthalten. Bewahren Sie sie sicher auf. Eine Wiederherstellung ersetzt nach ausdrücklicher Bestätigung alle aktuellen Daten.",
+      "create": "Sicherung erstellen",
+      "creating": "Sicherung wird erstellt…",
+      "creatingHelp": "Die App kopiert und überprüft Ihre lokalen Daten. Sie können die App weiter verwenden; dies kann einen Moment dauern.",
+      "restoring": "Sicherung wird wiederhergestellt… Bitte warten Sie, während die App Ihre Daten neu lädt.",
+      "created": "Sicherung erstellt. Sicherungen können sensible Daten enthalten.",
+      "deleted": "Sicherung gelöscht.",
+      "delete": "Löschen",
+      "deleteAria": "Diese Sicherung löschen",
+      "deleteConfirm": "Diese Sicherung und ihre Metadaten löschen? Dies kann nicht rückgängig gemacht werden.",
+      "restoreAria": "Diese Sicherung wiederherstellen",
+      "kinds": {
+        "recovery": "Wiederherstellungskopie",
+        "user": "Sicherung"
+      },
+      "restoreKind": {
+        "recovery": "Wiederherstellungskopie",
+        "user": "Benutzersicherung"
+      },
+      "restoreConfirmTitle": "Diese {{kind}} von {{createdAt}} wiederherstellen",
+      "restoreConfirmDetail": "({{size}} KB, Schema v{{schema}}, Prüfsumme {{checksum}})?",
+      "restoreConfirmWarning": "Die Wiederherstellung ERSETZT ALLE aktuellen Daten in diesem Arbeitsbereich und kann nicht rückgängig gemacht werden.",
+      "restoreConfirmPrivacy": "Die Sicherung kann persönliche Texte, Tagebucheinträge und Therapieeinträge enthalten.",
+      "restoreFailed": "Die Sicherung hat die Prüfung nicht bestanden. Die Wiederherstellung wurde abgebrochen.",
+      "restoreMissingChecksum": "Die Prüfung hat keine Prüfsumme zurückgegeben. Die Wiederherstellung wurde abgebrochen.",
+      "restored": "Sicherung wiederhergestellt. Alle Daten entsprechen nun der wiederhergestellten Sicherung.",
+      "schemaUnknown": "unbekannt"
+    },
+    "backupReminder": {
+      "aria": "Einstellung für Sicherungserinnerungen",
+      "title": "Sicherungserinnerungen",
+      "help": "Eine eigene Einstellung des Arbeitsbereichs, keine der Erinnerungskategorien. Sie fordert Sie lediglich zu einer manuellen Sicherung auf; die App erstellt niemals automatisch eine Sicherung.",
+      "enableAria": "Sicherungserinnerungen aktivieren",
+      "enabled": "Aktiviert",
+      "interval": "Erinnerungsintervall (Tage)",
+      "intervalHelp": "Zwischen {{min}} und {{max}} Tagen. {{recommended}} Tage sind das empfohlene Intervall. Eine Änderung wirkt sich nur auf den nächsten noch nicht erfassten Zyklus aus.",
+      "intervalWholeError": "Das Intervall der Sicherungserinnerung muss eine ganze Zahl von Tagen sein.",
+      "intervalRangeError": "Das Intervall der Sicherungserinnerung muss zwischen {{min}} und {{max}} Tagen liegen.",
+      "lastValidated": "Letzte geprüfte manuelle Sicherung: {{timestamp}}.",
+      "lastValidatedNone": "Noch keine geprüfte manuelle Sicherung erfasst.",
+      "timestampNote": "Dieser Zeitstempel wird erst aktualisiert, nachdem eine manuelle Sicherung Integritäts- und Prüfsummenprüfung bestanden hat. Eine Erinnerung ändert ihn nie.",
+      "safeMessageNote": "Wenn die Erinnerung fällig ist, zeigt sie nur den festen, sperrbildschirm-sicheren Text „{{message}}“. Er kann hier nicht geändert werden und enthält niemals Dateinamen, Pfade oder persönliche Inhalte.",
+      "scheduleNote": "Erinnerungen kommen im festen Zeitfenster um 09:00 UTC, nie im Ruhefenster von 22:00–07:00 UTC und höchstens einmal pro Intervallzyklus. Sie zählen nicht gegen die Tageslimits der Erinnerungskategorien.",
+      "saved": "Einstellung für Sicherungserinnerungen gespeichert.",
+      "saveSubmit": "Einstellung speichern"
+    },
+    "diagnostics": {
+      "title": "Diagnose",
+      "help": "Lokale Laufzeitversionen und Status des Dokumentkonverters.",
+      "compilerVersion": "Typst-Compiler",
+      "capability": "Mitgelieferte Fähigkeit",
+      "statusValid": "Verfügbar",
+      "statusInvalid": "Nicht verfügbar",
+      "unavailableResources": "Fehlt: {{resources}}",
+      "template": "Journalvorlage",
+      "fonts": "Schriftarten",
+      "fontsAvailable": "{{count}} eingebettete Schriftarten",
+      "environment": "Umgebung",
+      "sqliteVersion": "SQLite",
+      "tauriVersion": "Tauri-Laufzeit",
+      "osVersion": "Betriebssystem",
+      "unavailable": "Diagnose ist in dieser Sitzung nicht verfügbar."
+    },
+    "availability": {
+      "title": "Verfügbarkeit",
+      "subtitle": "Übliche Zeitfenster, in denen Ihre Aufmerksamkeit verfügbar sein kann, je Wochentag. Dies ist nur ein Vorschlag und verhindert niemals Arbeit außerhalb des Profils.",
+      "weekday": "Wochentag",
+      "energy": "Energieerwartung (optional)",
+      "energyPlaceholder": "z. B. hoch, mittel, niedrig",
+      "start": "Beginn",
+      "end": "Ende",
+      "preferredLength": "Bevorzugte Blocklänge (Minuten)",
+      "addSubmit": "Profil hinzufügen",
+      "updateSubmit": "Profil aktualisieren",
+      "cancelEdit": "Bearbeitung abbrechen",
+      "profiles": "Profile",
+      "profilesEmpty": "Noch keine Verfügbarkeitsprofile.",
+      "added": "Profil hinzugefügt.",
+      "updated": "Profil aktualisiert.",
+      "blockLength": "Blöcke von {{minutes}} Min.",
+      "noPreferredLength": "keine bevorzugte Länge"
+    },
+    "commitments": {
+      "title": "Feste Termine",
+      "subtitle": "Unveränderbare Ereignisse wie Arbeit, Schlaf, Mahlzeiten oder Termine. Sie sind Planungskontext und beeinflussen nie den Fortschritt.",
+      "type": "Typ",
+      "start": "Beginn (optional)",
+      "end": "Ende (optional)",
+      "duration": "Dauer in Minuten (optional)",
+      "movable": "Verschiebbar (leichter neu zu planen)",
+      "addSubmit": "Termin hinzufügen",
+      "added": "Termin hinzugefügt.",
+      "listTitle": "Alle Termine",
+      "empty": "Noch keine Termine.",
+      "movableBadge": "verschiebbar",
+      "fixedBadge": "fest",
+      "minutes": "{{minutes}} Min."
+    },
+    "import": {
+      "title": "Legacy-Import",
+      "subtitle": "Importieren Sie ein Proyecto-Vida-Repository, ohne es zu verändern. Die Quelldateien sind schreibgeschützt, und alles bleibt auf diesem Gerät.",
+      "sourceRoot": "Pfad zur Wurzel des Legacy-Repositorys",
+      "fullScan": "Ganzes Repository importieren",
+      "includePaths": "Nur diese Pfade importieren (einer pro Zeile, relativ zur Repositorywurzel)",
+      "includePathsHelp": "Es werden nur die aufgeführten Teilbäume gelesen. Lassen Sie das Kontrollkästchen oben deaktiviert, um den Import einzuschränken, oder aktivieren Sie es, um das ganze Repository zu durchsuchen.",
+      "previewSubmit": "Importvorschau erstellen",
+      "previewing": "Vorschau wird vorbereitet…",
+      "scanning": "Repository wird durchsucht, ohne Einträge zu importieren…",
+      "needPath": "Geben Sie vor dem Import den Pfad zur Wurzel des Legacy-Repositorys ein.",
+      "notComplete": "Der Import wurde nicht abgeschlossen. Details finden Sie im Bericht.",
+      "commitSubmit": "Entscheidungen prüfen und übernehmen",
+      "committing": "Wird bestätigt…",
+      "needDecisions": "Wählen Sie für jeden Prüfpunkt eine Entscheidung, bevor Sie übernehmen.",
+      "runSubmit": "Ohne Prüfung importieren",
+      "importing": "Wird importiert…",
+      "statusLine": "Importstatus: {{status}}",
+      "statusStarting": "Wird gestartet…",
+      "statusRunning": "Der Import läuft im Hintergrund. Sie können die App weiter nutzen, während er fertig wird.",
+      "staleHint": "{{message}} Erstellen Sie die Vorschau erneut, um die Signatur zu aktualisieren, und prüfen und bestätigen Sie dann."
+    }
+  },
+  "errors": {
+    "VALIDATION": "Bitte überprüfen Sie die Angaben und versuchen Sie es erneut.",
+    "NOT_FOUND": "Das angeforderte Element wurde nicht gefunden.",
+    "DATABASE": "Ihre lokalen Daten konnten nicht gespeichert werden. Bitte versuchen Sie es erneut.",
+    "IO": "Der lokale Dateivorgang konnte nicht abgeschlossen werden.",
+    "UNKNOWN": "Etwas Unerwartetes ist passiert. Bitte versuchen Sie es erneut."
+  },
+  "common": {
+    "taskCount_one": "{{count}} Aufgabe",
+    "taskCount_other": "{{count}} Aufgaben",
+    "loading": "Wird geladen…",
+    "saving": "Wird gespeichert…",
+    "creating": "Wird erstellt…",
+    "deadlineDate": "Frist {{date}}",
+    "actions": {
+      "activate": "Aktivieren",
+      "add": "Hinzufügen",
+      "addExistingProject": "Vorhandenes Projekt hinzufügen",
+      "addExistingTask": "Vorhandene Aufgabe hinzufügen",
+      "adding": "Wird hinzugefügt…",
+      "apply": "Anwenden",
+      "archive": "Archivieren",
+      "back": "Zurück",
+      "cancel": "Abbrechen",
+      "close": "Schließen",
+      "collapse": "Zuklappen",
+      "complete": "Abschließen",
+      "confirmArchive": "Archivieren bestätigen",
+      "continue": "Weiter",
+      "create": "Erstellen",
+      "deactivate": "Deaktivieren",
+      "defer": "Verschieben",
+      "delete": "Löschen",
+      "deselect": "Abwählen",
+      "dismiss": "Ausblenden",
+      "edit": "Bearbeiten",
+      "expand": "Aufklappen",
+      "export": "Exportieren",
+      "finish": "Beenden",
+      "next": "Weiter",
+      "pause": "Pausieren",
+      "previous": "Zurück",
+      "remove": "Entfernen",
+      "replan": "Umplanen",
+      "restore": "Wiederherstellen",
+      "resume": "Fortsetzen",
+      "save": "Speichern",
+      "saveChanges": "Änderungen speichern",
+      "skip": "Überspringen",
+      "snooze": "Schlummern",
+      "start": "Starten",
+      "viewProgressDetails": "Fortschrittsdetails anzeigen"
+    },
+    "fields": {
+      "priority": "Priorität",
+      "status": "Status",
+      "targetDate": "Zieldatum",
+      "title": "Titel"
+    },
+    "labels": {
+      "taskStatus": {
+        "inbox": "Eingang",
+        "planned": "Geplant",
+        "in_progress": "In Bearbeitung",
+        "blocked": "Blockiert",
+        "completed": "Abgeschlossen",
+        "cancelled": "Abgebrochen",
+        "deferred": "Zurückgestellt"
+      },
+      "priority": {
+        "none": "Keine",
+        "low": "Niedrig",
+        "normal": "Normal",
+        "high": "Hoch",
+        "critical": "Kritisch"
+      },
+      "commitmentType": {
+        "sleep": "Schlafen",
+        "meal": "Mahlzeit",
+        "work": "Arbeit",
+        "appointment": "Termin",
+        "exercise": "Bewegung",
+        "other": "Sonstiges"
+      },
+      "goalStatus": {
+        "inbox": "Eingang",
+        "active": "Aktiv",
+        "paused": "Pausiert",
+        "achieved": "Erreicht",
+        "abandoned": "Aufgegeben",
+        "archived": "Archiviert"
+      },
+      "projectStatus": {
+        "inbox": "Eingang",
+        "planned": "Geplant",
+        "active": "Aktiv",
+        "paused": "Pausiert",
+        "completed": "Abgeschlossen",
+        "cancelled": "Abgebrochen",
+        "archived": "Archiviert"
+      },
+      "effortSize": {
+        "trivial": "Trivial",
+        "small": "Klein",
+        "medium": "Mittel",
+        "large": "Groß",
+        "very_large": "Sehr groß"
+      },
+      "deadlineStatus": {
+        "none": "Keine",
+        "normal": "Normal",
+        "approaching": "Bald fällig",
+        "overdue": "Überfällig",
+        "blocked_risk": "Risiko durch Blockade"
+      },
+      "progressState": {
+        "no_tasks": "Keine Aufgaben",
+        "not_started": "Nicht begonnen",
+        "archived": "Archiviert",
+        "cancelled": "Abgebrochen",
+        "abandoned": "Aufgegeben"
+      },
+      "severity": {
+        "info": "Info",
+        "warning": "Warnung",
+        "error": "Fehler"
+      },
+      "jobStatus": {
+        "queued": "In Warteschlange",
+        "running": "Läuft",
+        "completed": "Abgeschlossen",
+        "failed": "Fehlgeschlagen",
+        "cancelled": "Abgebrochen"
+      },
+      "weekday": {
+        "sunday": "Sonntag",
+        "monday": "Montag",
+        "tuesday": "Dienstag",
+        "wednesday": "Mittwoch",
+        "thursday": "Donnerstag",
+        "friday": "Freitag",
+        "saturday": "Samstag"
+      },
+      "content": "Inhalt",
+      "description": "Beschreibung",
+      "whyItMatters": "Warum es wichtig ist",
+      "taskTree": "Aufgabenbaum"
+    },
+    "markdown": {
+      "preview": "Vorschau",
+      "previewRegion": "Vorschau von {{label}}",
+      "empty": "Noch kein Inhalt.",
+      "toolbarLabel": "Markdown-Formatierung",
+      "bold": "Fett",
+      "italic": "Kursiv",
+      "link": "Link",
+      "list": "Liste",
+      "headingSelect": "Überschrift einfügen",
+      "headingPlaceholder": "Überschrift…",
+      "headingOption": "Überschrift {{level}} ({{markers}})",
+      "headingHelp": "Hilfe zu Überschriften",
+      "headingHelpTitle": "Für den Titel brauchst du kein #: Das Feld Titel fügt es bereits hinzu. Verwende ## oder tiefere Ebenen nur für Unterüberschriften innerhalb des Inhalts.",
+      "viewModeLabel": "Markdown-Ansicht",
+      "viewSplit": "Geteilt",
+      "viewEditor": "Nur Editor",
+      "viewPreview": "Nur Vorschau",
+      "dictionaryAdd": "Zum Windows-Wörterbuch hinzufügen",
+      "dictionaryAdded": "Zum Windows-Wörterbuch hinzugefügt",
+      "dictionaryError": "Windows-Wörterbuch konnte nicht aktualisiert werden"
+    },
+    "export": {
+      "format": "Format",
+      "template": "Vorlage",
+      "from": "Von",
+      "to": "Bis",
+      "exportAll": "Alle exportieren",
+      "exportButton": "{{format}} exportieren",
+      "exporting": "Exportiere…",
+      "preparing": "Export wird vorbereitet…",
+      "running": "Läuft…",
+      "stalePreview": "Die Auswahl hat sich seit der Vorschau geändert. Erstelle vor dem Exportieren erneut eine Vorschau.",
+      "rePreview": "Auswahl erneut vorschauen",
+      "valid": "gültig",
+      "invalid": "ungültig",
+      "unavailable": "nicht verfügbar: {{resources}}",
+      "formats": {
+        "markdown": "Markdown",
+        "typst": "Typst",
+        "pdf": "PDF"
+      }
+    },
+    "progress": {
+      "detailsFor": "Fortschrittsdetails für {{title}}",
+      "explainer": "Der Fortschritt kommt von berücksichtigten Endaufgaben, gewichtet nach Aufwandspunkten.",
+      "close": "Fortschrittsdetails schließen",
+      "pointsSummary_one": "{{completed}} von {{total}} Aufwandspunkten über {{countDisplay}} Endaufgabe abgeschlossen.",
+      "pointsSummary_other": "{{completed}} von {{total}} Aufwandspunkten über {{countDisplay}} Endaufgaben abgeschlossen.",
+      "done": "erledigt",
+      "pointsValue": "{{points}} Pkt",
+      "empty": "Noch keine berücksichtigte Endaufgabe trägt zu diesem Umfang bei.",
+      "loading": "Fortschrittsdetails werden geladen…"
+    },
+    "exportPreview": {
+      "title": "Exportvorschau",
+      "itemCount_one": "{{count}} Element",
+      "itemCount_other": "{{count}} Elemente",
+      "truncatedCount": "(die ersten {{shown}} werden angezeigt)",
+      "largeSelection": "Große Auswahl: Es werden die ersten {{shown}} von {{total}} Elementen angezeigt. Der Export selbst enthält alle {{total}}.",
+      "therapyWarning": "Diese Auswahl enthält privat markierte Therapieinhalte. Bestätigen Sie vor dem Export.",
+      "fingerprintLabel": "Auswahlsignatur",
+      "fingerprintHelp": "Bestätigt die genauen Elemente und Inhalte, die Sie exportieren.",
+      "contentFingerprintTitle": "Inhaltssignatur (nicht der Quelltext)"
+    },
+    "exportJob": {
+      "title": "Exportauftrag",
+      "ariaLabel": "Exportauftrag {{status}}",
+      "failedSourceSaved": "Der Export ist fehlgeschlagen, aber die Markdown-Quelle wurde gespeichert.",
+      "diagnostics": "Diagnose ({{count}})",
+      "diagnosticCounts": "{{errors}} Fehler · {{warnings}} Warnungen · {{info}} Hinweise",
+      "copyDiagnostics": "Sichere Diagnosezusammenfassung kopieren",
+      "open": "Öffnen",
+      "localArtifacts": "Lokale Artefakte ({{count}})",
+      "unknownSize": "unbekannte Größe",
+      "bytes": "{{size}} B",
+      "kilobytes": "{{size}} KB",
+      "megabytes": "{{size}} MB",
+      "formats": {
+        "md": "Markdown",
+        "normalized_md": "Normalisiertes Markdown",
+        "typ": "Typst",
+        "pdf": "PDF",
+        "diagnostics": "Diagnose",
+        "unknown": "Diagnose"
+      }
+    },
+    "exportHistory": {
+      "title": "Frühere Exporte",
+      "subtitle": "Öffnen Sie Dateien, die in diesem Arbeitsbereich erzeugt wurden, erneut.",
+      "count_one": "{{count}} Export",
+      "count_other": "{{count}} Exporte",
+      "empty": "Es wurden noch keine Exporte erzeugt.",
+      "deleteConfirm": "Export „{{title}}“ und seine Dateien löschen?",
+      "openFormat": "{{format}} öffnen",
+      "saveCopy": "Kopie speichern",
+      "noArtifact": "Es wurde kein Ausgabeartefakt erzeugt.",
+      "formats": {
+        "md": "Markdown",
+        "typ": "Typst",
+        "pdf": "PDF"
+      }
+    },
+    "jobProgress": {
+      "title": "Auftragsfortschritt",
+      "ariaLabel": "Auftragsfortschritt: {{phase}}",
+      "percent": "{{percent}} %",
+      "percentMax": "/ 100 %",
+      "pending": "Ausstehend…",
+      "cancelNote": "Abbrechen stoppt den Auftrag am nächsten sicheren Punkt; die Navigation bleibt nutzbar, während er fertig wird.",
+      "backgroundNote": "Sie können anderswo navigieren; der Auftrag läuft im Hintergrund weiter.",
+      "closeAria": "Fortschrittsdialog schließen"
+    },
+    "feedback": {
+      "errorTitle": "Diese Ansicht konnte nicht angezeigt werden",
+      "reload": "App neu laden"
+    }
+  },
+  "shell": {
+    "primaryNav": "Hauptnavigation",
+    "breadcrumb": "Brotkrumennavigation",
+    "nav": {
+      "today": "Heute",
+      "analytics": "Analysen",
+      "calendar": "Kalender",
+      "projects": "Projekte",
+      "goals": "Ziele",
+      "tasks": "Aufgaben",
+      "journal": "Tagebuch",
+      "therapy": "Therapie",
+      "settings": "Einstellungen"
+    },
+    "theme": {
+      "light": "Hell",
+      "dark": "Dunkel",
+      "system": "System",
+      "switchToLight": "Zum hellen Modus wechseln",
+      "switchToDark": "Zum dunklen Modus wechseln"
+    },
+    "palette": {
+      "label": "Befehlspalette",
+      "searchLabel": "Befehlspalette durchsuchen",
+      "placeholder": "Die Suche folgt in einer späteren Version...",
+      "note": "Die Suche wird in einer späteren Phase ergänzt. Sie muss Therapieinhalte und Tagebuchtexte ausschließen; Therapieaufzeichnungen und Tagebuchinhalte dürfen hier niemals angezeigt werden."
+    },
+    "bell": {
+      "label": "Benachrichtigungen",
+      "unread_one": "Benachrichtigungen ({{count}} ungelesen)",
+      "unread_other": "Benachrichtigungen ({{count}} ungelesen)",
+      "loading": "Benachrichtigungen werden geladen…"
+    }
+  },
+  "today": {
+    "title": "Heute",
+    "notToday": "(nicht heute)",
+    "planningRitual": "Planungsritual",
+    "planStatus": "Planungsstatus",
+    "planStatuses": {
+      "not_started": "Nicht begonnen",
+      "planning": "Planung",
+      "planned": "Geplant",
+      "in_review": "In Überprüfung",
+      "closed": "Geschlossen"
+    },
+    "selectedTasks": "Ausgewählte Aufgaben",
+    "blocks": {
+      "title": "Blöcke",
+      "scheduled": {
+        "title": "Geplante Blöcke",
+        "empty": "Es sind keine Blöcke vorgeplant.",
+        "loadMore": "Mehr laden",
+        "nextOccurrence": "Nächste Wiederholung: {{date}}",
+        "deleteConfirm": "Diese Routine löschen? Zukünftige Wiederholungen werden zurückgezogen; historische Einträge bleiben erhalten.",
+        "loadFailed": "Die geplanten Blöcke konnten nicht geladen werden."
+      },
+      "inactive": {
+        "title": "Inaktive Blöcke",
+        "empty": "Es gibt keine inaktiven Blöcke.",
+        "loadFailed": "Die inaktiven Blöcke konnten nicht geladen werden.",
+        "oneTime": "Einzelblock",
+        "routine": "Wöchentliche Routine",
+        "reactivate": "Reaktivieren",
+        "delete": "Löschen",
+        "deleteConfirm": "Diesen Block löschen? Er verschwindet aus dem Plan, bleibt aber im Verlauf.",
+        "reactivated": "Der Block wurde reaktiviert.",
+        "seriesReactivatedNotice": "Diese Routine ist wieder aktiv. Um ihre Wochentage zu ändern, öffnen Sie das nächste Vorkommen und wählen Sie Bearbeiten."
+      }
+    },
+    "deadlineWarnings": "Fristwarnungen",
+    "fixedCommitments": "Feste Termine",
+    "noCommitments": "Heute keine festen Termine.",
+    "task": {
+      "empty": "Noch keine Aufgaben für heute ausgewählt.",
+      "moveUp": "Nach oben",
+      "moveDown": "Nach unten",
+      "divideIntoChildren": "In Unteraufgaben teilen…"
+    },
+    "replan": {
+      "move_to_next_day": "Auf den nächsten Tag verschieben",
+      "return_to_planned": "Zurück zu geplant",
+      "remove_date": "Datum entfernen",
+      "defer": "Verschieben",
+      "divide": "In Unteraufgaben teilen"
+    },
+    "deadline": {
+      "empty": "Keine Aufgabe nähert sich ihrer Frist.",
+      "statuses": {
+        "overdue": "Überfällig",
+        "blocked_risk": "Risiko durch Blockade",
+        "approaching": "Bald fällig",
+        "normal": "Normal",
+        "none": "Keine"
+      }
+    },
+    "block": {
+      "empty": "Noch keine Blöcke. Blöcke sind flexible Absichtszeiträume; genaue Zeiten sind optional.",
+      "add": "+ Block hinzufügen",
+      "noTime": "ohne genaue Zeit",
+      "recurring": "Wöchentlich",
+      "deactivate": "Deaktivieren",
+      "deactivateRoutine": "Routine deaktivieren",
+      "delete": "Löschen",
+      "deleteRoutine": "Routine löschen",
+      "deleteConfirm": "Diesen Block löschen? Er verschwindet aus dem Plan, bleibt aber im Verlauf.",
+      "durationMinutes_one": "{{count}} Min.",
+      "durationMinutes_other": "{{count}} Min.",
+      "refreshFailed": "Die Wiederholung wurde gespeichert, aber die Liste dieses Tages konnte nicht aktualisiert werden. Die neuesten Vorkommen erscheinen beim nächsten Laden des Tages.",
+      "types": {
+        "planning": "Planung",
+        "focus": "Fokus",
+        "review": "Rückschau",
+        "journaling": "Tagebuch",
+        "rest": "Erholung",
+        "personal": "Persönlich"
+      },
+      "statuses": {
+        "planned": "Geplant",
+        "active": "Aktiv",
+        "completed": "Abgeschlossen",
+        "skipped": "Übersprungen",
+        "cancelled": "Abgebrochen"
+      },
+      "flexibilities": {
+        "fixed": "Fix",
+        "flexible": "Flexibel",
+        "approximate": "Ungefähr"
+      },
+      "windows": {
+        "morning": "Vormittag",
+        "afternoon": "Nachmittag",
+        "evening": "Abend",
+        "after_meal": "Nach dem Essen"
+      },
+      "form": {
+        "type": "Typ",
+        "flexibility": "Flexibilität",
+        "label": "Bezeichnung",
+        "labelPlaceholder": "z. B. Konzentrierte Arbeit am Morgen",
+        "start": "Vorgesehener Start (optional)",
+        "duration": "Geschätzte Dauer (Minuten)",
+        "badDuration": "Geben Sie eine ganze Zahl von Minuten größer als null ein.",
+        "badStart": "Geben Sie eine exakte lokale Startzeit an (HH:MM).",
+        "window": "Zeitfenster (optional)",
+        "windowNone": "Kein bestimmtes Fenster",
+        "note": "Notiz (optional)",
+        "submit": "Block hinzufügen",
+        "submitEdit": "Änderungen speichern",
+        "needLabel": "Eine Bezeichnung hilft Ihnen, den Block wiederzuerkennen.",
+        "weekly": "Wöchentlich wiederholen",
+        "repeatDays": "Wiederholen am",
+        "needDays": "Wählen Sie mindestens einen Wochentag aus.",
+        "needStartRecurring": "Wiederkehrende Blöcke benötigen eine exakte Startzeit.",
+        "recurrenceNotice": "Sie bearbeiten die wöchentliche Regel. Änderungen gelten für künftige Vorkommen; abgeschlossene und übersprungene Verläufe bleiben erhalten.",
+        "recurrenceLoadFailed": "Die wöchentliche Regel konnte nicht geladen werden, daher kann dieser Block nicht gespeichert werden.",
+        "windowNotStored": "Tageszeitfenster werden nicht in wöchentlichen Regeln gespeichert."
+      },
+      "reactivate": {
+        "title": "Block reaktivieren",
+        "schedule": "Terminierung",
+        "once": "Einmal",
+        "recurring": "Wöchentlich",
+        "weekday": "Beginn am",
+        "start": "Startzeit (HH:MM)",
+        "duration": "Dauer (Minuten)",
+        "submit": "Block reaktivieren"
+      },
+      "task": {
+        "enable": "An einer Aufgabe arbeiten",
+        "pick": "Aufgabe",
+        "none": "Keine Aufgabe",
+        "empty": "Keine geeigneten Aufgaben.",
+        "loadFailed": "Die Aufgabenliste konnte nicht geladen werden.",
+        "workOnLabel": "An {{title}} arbeiten"
+      }
+    },
+    "session": {
+      "title": "Sitzung",
+      "start": "Sitzung starten",
+      "saveFinish": "Abschluss speichern",
+      "outcomeAria": "Sitzungsergebnis",
+      "outcomePlaceholder": "Was haben Sie erreicht?",
+      "nextStepAria": "Nächster Schritt",
+      "nextStepPlaceholder": "Nächster Schritt (optional)",
+      "history": {
+        "empty": "Noch keine Sitzungen.",
+        "notStarted": "Noch nicht gestartet",
+        "until": "bis",
+        "next": "Nächster Schritt:"
+      },
+      "statuses": {
+        "planned": "Geplant",
+        "started": "Gestartet",
+        "finished": "Beendet",
+        "paused": "Pausiert",
+        "skipped": "Übersprungen"
+      }
+    },
+    "ritual": {
+      "title": "Planungsritual · {{date}}",
+      "steps": {
+        "unblocked": "Nicht blockierte Aufgaben prüfen",
+        "blocked": "Blockierte Aufgaben prüfen",
+        "confirm": "Auswahl für heute bestätigen",
+        "planning": "Planungsblock und Absicht"
+      },
+      "unblockedIntro": "Nicht blockierte Aufgaben, sortiert nach Priorität und nahenden Fristen. Wählen Sie die Aufgaben aus, die Sie heute angehen möchten.",
+      "unblockedEmpty": "Keine nicht blockierten Aufgaben vorhanden.",
+      "blockedIntro": "Blockierte Aufgaben werden separat angezeigt. Sie werden erst empfohlen, wenn ihre Blockaden gelöst sind.",
+      "blockedEmpty": "Derzeit ist nichts blockiert.",
+      "blockingNote": "Blockadenotiz: {{note}}",
+      "blockedByDependency": "Durch eine unvollständige Abhängigkeit blockiert.",
+      "confirmIntro": "Bestätigen Sie die Auswahl für heute. Eine Aufgabe auszuwählen, ändert ihre Frist nicht.",
+      "selectionEmpty": "Noch nichts ausgewählt.",
+      "reasonFor": "Grund für {{title}}",
+      "reasons": {
+        "next_action": "Nächste Aktion",
+        "priority": "Priorität",
+        "deadline": "Frist",
+        "dependency": "Abhängigkeit",
+        "manual": "Manuell"
+      },
+      "capacityHint": "Kapazitätshinweis: Ein Fokuszeitfenster steht von {{start}} bis {{end}} zur Verfügung.",
+      "capacityHintPreferred_one": "Kapazitätshinweis: Ein Fokuszeitfenster steht von {{start}} bis {{end}} zur Verfügung (bevorzugt {{countDisplay}} Minute).",
+      "capacityHintPreferred_other": "Kapazitätshinweis: Ein Fokuszeitfenster steht von {{start}} bis {{end}} zur Verfügung (bevorzugt {{countDisplay}} Minuten).",
+      "capacityNotePrefill": "Vorgeschlagenes Fokuszeitfenster: {{start}} – {{end}}.",
+      "capacityNotePrefillEnergy": "Vorgeschlagenes Fokuszeitfenster: {{start}} – {{end}} ({{energy}}).",
+      "intention": "Absichtsnotiz",
+      "intentionPlaceholder": "Was ist heute am wichtigsten?",
+      "capacityNote": "Kapazitätsnotiz",
+      "planningBlockLabel": "Tägliche Planung",
+      "finishHelp": "Beim Abschluss wird ein Planungsblock für {{date}} erstellt und die Absicht gespeichert.",
+      "finish": "Planung abschließen"
+    }
+  },
+  "analytics": {
+    "title": "Gewohnheitsanalyse",
+    "subtitle": "Schreibgeschützte Historie deiner wiederkehrenden Routinen.",
+    "range": {
+      "from": "Von Datum",
+      "to": "Bis Datum",
+      "invalid": "Das Startdatum des Zeitraums darf nicht nach dem Enddatum liegen.",
+      "showing": "Zeitraum {{from}} – {{to}}"
+    },
+    "empty": "In diesem Arbeitsbereich gibt es noch keine wiederkehrenden Routinen.",
+    "unnamedRoutine": "Routine ohne Namen",
+    "outOfRangeLabelNote": "In diesem Zeitraum liegen keine geplanten Tage; der angezeigte Name ist der aktuelle Name der Routine.",
+    "coverage": {
+      "since": "In Benutzung seit {{date}}",
+      "paused": "Pausiert {{from}} → {{until}}",
+      "unknown": "Keine erfasste Nutzung in diesem Zeitraum."
+    },
+    "unrecordedNote": "„Nicht erfasst“ bedeutet, dass für einen geplanten Tag kein Ergebnis erfasst wurde. Es ist kein Nachweis eines Scheiterns.",
+    "rate": {
+      "display": "{{completed}} von {{scheduled}} geplant — {{percent}}%",
+      "hidden": "In diesem Zeitraum gibt es noch keine planbaren Tage."
+    },
+    "definition": "Erledigt von allen geplanten Tagen, ohne abgebrochene oder zurückgezogene Tage und ohne Tage außerhalb des aktiven Plans oder des Versionsfensters der Routine. „Nicht erfasst“ bedeutet, dass für einen geplanten Tag kein Ergebnis erfasst wurde.",
+    "counts": {
+      "scheduled": "Geplant",
+      "completed": "Erledigt",
+      "started": "Begonnen (nicht erledigt)",
+      "skipped": "Übersprungen / abgelaufen",
+      "cancelled": "Abgebrochen / zurückgezogen",
+      "unrecorded": "Nicht erfasst"
+    },
+    "trend": {
+      "title": "Wöchentlicher Verlauf",
+      "weekStarting": "Woche ab"
+    },
+    "reviewRoutine": "Routine prüfen oder bearbeiten"
+  },
+  "calendar": {
+    "title": "Kalender",
+    "weekView": "Wochenansicht",
+    "monthView": "Monatsansicht",
+    "legend": {
+      "dailyPlan": "Tagesplan",
+      "blocks": "Blöcke",
+      "deadlines": "Fristen"
+    },
+    "dots": {
+      "plan": "Plan",
+      "blocks": "Blöcke",
+      "deadline": "Frist"
+    }
+  },
+  "goals": {
+    "title": "Ziele",
+    "new": "Neues Ziel",
+    "subtitle": "Bedeutungsvolle Richtungen. Der Fortschritt umfasst direkte Aufgaben und die Endaufgaben der mit jedem Ziel verknüpften Projekte.",
+    "empty": "Noch keine Ziele. Beginnen Sie mit einer Richtung, die Sie verwirklichen möchten.",
+    "detailTitle": "Ziel",
+    "editTitle": "Ziel bearbeiten",
+    "successDefinition": "Erfolgsdefinition",
+    "linkedProjects": "Verknüpfte Projekte",
+    "linkedProjectsEmpty": "Noch keine Projekte mit diesem Ziel verknüpft.",
+    "directTasks": "Direkte Aufgaben",
+    "directTasksEmpty": "Noch keine direkten Aufgaben. Kleine Ziele können Aufgaben ohne Projekt nutzen.",
+    "addProject": "Projekt hinzufügen",
+    "addDirectTask": "Direkte Aufgabe hinzufügen",
+    "attachTaskDescription": "Binden Sie eine vorhandene Endaufgabe an, damit sie als direkte Aufgabe dieses Ziels zählt.",
+    "attachProjectDescription": "Verknüpfen Sie ein vorhandenes Projekt, damit es zu diesem Ziel beiträgt.",
+    "layoutGroupLabel": "Listenlayout",
+    "layoutList": "Liste",
+    "layoutColumns": "Zwei Spalten",
+    "layoutTiles": "Kacheln",
+    "form": {
+      "submit": "Ziel speichern",
+      "createSubmit": "Ziel erstellen",
+      "description": "Beschreibung (Markdown)",
+      "why": "Warum es wichtig ist (Markdown)",
+      "success": "Erfolgsdefinition (Markdown)"
+    }
+  },
+  "projects": {
+    "title": "Projekte",
+    "new": "Neues Projekt",
+    "subtitle": "Abgegrenzte Ergebnisse, die Sie in Aufgaben unterteilen können. Der Fortschritt kommt von abgeschlossenen Endaufgaben, gewichtet nach Aufwandspunkten.",
+    "empty": "Noch keine Projekte. Erstellen Sie eines, um ein Ziel in umsetzbare Arbeit zu verwandeln.",
+    "detailTitle": "Projekt",
+    "editTitle": "Projekt bearbeiten",
+    "linkedToGoalNote": "Dieses Projekt wird mit dem Ziel verknüpft, von dem Sie gekommen sind.",
+    "definitionOfDone": "Fertigstellungskriterien",
+    "addTask": "Aufgabe hinzufügen",
+    "attachTaskDescription": "Binden Sie eine vorhandene Endaufgabe an, damit sie zu diesem Projekt beiträgt.",
+    "taskTreeEmpty": "Noch keine Aufgaben. Fügen Sie die erste hinzu, um Fortschritte zu machen.",
+    "searchLabel": "Projekte suchen",
+    "searchPlaceholder": "Projekte suchen…",
+    "addExistingEmpty": "Keine für die Verknüpfung geeigneten Projekte.",
+    "layoutGroupLabel": "Listenlayout",
+    "layoutList": "Liste",
+    "layoutColumns": "Zwei Spalten",
+    "layoutTiles": "Kacheln",
+    "layoutGroupLabel": "Listenlayout",
+    "form": {
+      "submit": "Projekt speichern",
+      "createSubmit": "Projekt erstellen",
+      "description": "Beschreibung (Markdown)",
+      "why": "Warum es wichtig ist (Markdown)",
+      "dod": "Fertigstellungskriterien (Markdown)"
+    }
+  },
+  "tasks": {
+    "title": "Aufgaben",
+    "listTitle": "Aufgaben",
+    "new": "Neue Aufgabe",
+    "empty": "Noch keine Aufgaben. Erstellen Sie eine, um eine Aktion zu erfassen.",
+    "detailTitle": "Aufgabe",
+    "editTitle": "Aufgabe bearbeiten",
+    "create": {
+      "newTitle": "Neue Aufgabe",
+      "newInProject": "Neue Aufgabe in {{project}}",
+      "goalLinkNote": "Diese Aufgabe wird direkt mit dem Ziel verknüpft, zu dem sie gehört.",
+      "newChild": "Neue Unteraufgabe",
+      "projectLoadingContext": "Der Projektkontext wird noch geladen. Bitte versuchen Sie es erneut."
+    },
+    "childrenArchived": "Unteraufgaben archiviert",
+    "reopen": "Aufgabe wieder öffnen",
+    "changeStatus": "Status ändern",
+    "changeStatusPlaceholder": "Status ändern…",
+    "blockingNote": "Blockadenotiz",
+    "blockingNotePlaceholder": "Blockadenotiz (erforderlich ohne Abhängigkeit)",
+    "archiveSubtree": "Unterbaum archivieren",
+    "restoreSubtree": "Unterbaum wiederherstellen",
+    "archiveSubtreeHint": "Archiviert nur die abgeschlossenen Unteraufgaben",
+    "delete": "Aufgabe löschen",
+    "confirmDelete": "Löschen bestätigen",
+    "closureReason": "Schließgrund",
+    "prerequisites": "Voraussetzungen",
+    "createChild": "Unteraufgabe erstellen",
+    "addChild": "Unteraufgabe hinzufügen",
+    "archived": "Archiviert",
+    "blockedByPrerequisite": "Durch eine offene Voraussetzung blockiert",
+    "searchLabel": "Aufgaben suchen",
+    "searchPlaceholder": "Aufgaben suchen…",
+    "addExistingEmpty": "Keine zum Anhängen geeigneten Aufgaben.",
+    "pointsSuffix": "{{points}} P",
+    "effortSize": "Aufwandsgröße",
+    "effortNotSet": "Nicht festgelegt",
+    "scheduledDate": "Vorgesehener Tag",
+    "dependenciesLoading": "Abhängigkeiten werden geladen…",
+    "addPrerequisite": "Aufgabe als Voraussetzung hinzufügen",
+    "selectPrerequisite": "Voraussetzung auswählen…",
+    "noPrerequisites": "Keine Voraussetzungen definiert.",
+    "notBlocked": "Diese Aufgabe ist durch keine offene Voraussetzung blockiert.",
+    "whyBlocked": "Warum ist das blockiert?",
+    "layoutGroupLabel": "Listenlayout",
+    "layoutList": "Liste",
+    "layoutColumns": "Zwei Spalten",
+    "layoutTiles": "Kacheln",
+    "controlsLabel": "Aufgabensteuerung",
+    "sortLabel": "Sortieren",
+    "sortCreated": "Erstellt",
+    "sortProximity": "Termin-Nähe",
+    "sortImportance": "Wichtigkeit",
+    "sortDifficulty": "Schwierigkeit",
+    "sortAscending": "Aufsteigend sortieren",
+    "sortDescending": "Absteigend sortieren",
+    "filterLabel": "Filtern",
+    "filterAll": "Alle Aufgaben",
+    "filterOpen": "Offen",
+    "filterCompleted": "Erledigt",
+    "filterOverdue": "Überfällig",
+    "groupLabel": "Gruppieren",
+    "groupNone": "Keine Gruppierung",
+    "groupProject": "Nach Projekt",
+    "groupGoal": "Nach Ziel",
+    "groupNested": "Ziel → Projekt",
+    "ungrouped": "Nicht zugeordnet",
+    "noMatchingTasks": "Keine Aufgaben entsprechen diesen Filtern.",
+    "form": {
+      "submit": "Aufgabe speichern",
+      "createSubmit": "Aufgabe erstellen",
+      "createChildSubmit": "Unteraufgabe erstellen",
+      "description": "Beschreibung (Markdown)",
+      "notes": "Notizen (Markdown)"
+    },
+    "matrix": {
+      "title": "Prioritäten-Aufwands-Matrix",
+      "corner": "Aufwand / Priorität",
+      "hint": "Die Auswahl einer Zelle speichert Aufwandsgröße und Priorität getrennt. Bei großen und kritischen Aufgaben empfiehlt sich eine Aufteilung.",
+      "recommendation": {
+        "whenSpace": "Wenn Raum ist",
+        "plan": "Planen",
+        "addressSoon": "Bald erledigen",
+        "addressToday": "Heute erledigen",
+        "pending": "Ausstehend",
+        "prioritize": "Priorisieren",
+        "immediatePriority": "Sofortige Priorität",
+        "divideAndPrioritize": "Aufteilen und priorisieren",
+        "divideAndAddress": "Aufteilen und erledigen",
+        "divide": "Aufteilen",
+        "urgentlyDivide": "Dringend aufteilen"
+      }
+    }
+  },
+  "journal": {
+    "title": "Tagebuch",
+    "new": "Neuer Eintrag",
+    "empty": "Noch keine Tagebucheinträge. Schreibe heute deinen ersten Eintrag.",
+    "selectAll": "Alle auswählen",
+    "deselectAll": "Auswahl aufheben",
+    "setExportable": "Als exportierbar markieren",
+    "setPrivate": "Als privat markieren",
+    "archiveSelected": "Auswahl archivieren",
+    "exportable": "Exportierbar",
+    "private": "Privat",
+    "selectedCount_one": "{{count}} ausgewählt",
+    "selectedCount_other": "{{count}} ausgewählt",
+    "listedCount_one": "{{count}} gelistet",
+    "listedCount_other": "{{count}} gelistet",
+    "selectEntryAria": "{{title}} auswählen",
+    "archiveConfirm_one": "{{count}} ausgewählten Tagebucheintrag archivieren?",
+    "archiveConfirm_other": "{{count}} ausgewählte Tagebucheinträge archivieren?",
+    "archived_one": "{{count}} Tagebucheintrag archiviert.",
+    "archived_other": "{{count}} Tagebucheinträge archiviert.",
+    "markedExportable_one": "{{count}} Tagebucheintrag als Exportierbar markiert.",
+    "markedExportable_other": "{{count}} Tagebucheinträge als Exportierbar markiert.",
+    "markedPrivate_one": "{{count}} Tagebucheintrag als Privat markiert.",
+    "markedPrivate_other": "{{count}} Tagebucheinträge als Privat markiert.",
+    "newTitle": "Neuer Tagebucheintrag",
+    "editTitle": "Tagebucheintrag bearbeiten",
+    "detailTitle": "Tagebucheintrag",
+    "linkedItems": "Verknüpfte Elemente",
+    "olderEntry": "← Älterer Eintrag",
+    "newerEntry": "Neuerer Eintrag →",
+    "form": {
+      "saveSubmit": "Eintrag speichern",
+      "createSubmit": "Eintrag erstellen",
+      "date": "Datum",
+      "content": "Inhalt (Markdown)",
+      "mood": "Stimmung",
+      "moodPlaceholder": "z. B. ruhig, müde",
+      "energy": "Energie",
+      "energyPlaceholder": "z. B. niedrig, hoch",
+      "emotions": "Emotionen",
+      "emotionsPlaceholder": "z. B. ruhig, dankbar, müde",
+      "emotionsHelp": "Freitext, beliebige Wörter. Trenne mehrere Emotionen mit Kommas.",
+      "template": "Tagebuchvorlage",
+      "templateFallbackOption": "Basis-Tagebuch (1.0.1)",
+      "exportableHelp": "Einträge bleiben immer lokal und privat auf diesem Computer. «Exportierbar» erlaubt nur, diesen Eintrag bei einem ausdrücklichen Export einzubeziehen; öffentlich wird er dadurch nie. Wenn du dies deaktivierst, kann der Eintrag nicht exportiert werden."
+    },
+    "templateField": {
+      "select": "Auswählen…"
+    },
+    "reference": {
+      "loading": "Referenzen werden geladen…",
+      "empty": "Noch keine verknüpften Elemente.",
+      "entityTypeAria": "Referenz-Entitätstyp",
+      "entityIdAria": "Referenz-Entitäts-ID",
+      "entityIdPlaceholder": "Entitäts-ID",
+      "relationAria": "Referenzbeziehung",
+      "entityTypes": {
+        "task": "Aufgabe",
+        "project": "Projekt",
+        "goal": "Ziel",
+        "block": "Block",
+        "session": "Sitzung"
+      },
+      "relations": {
+        "mentions": "Erwähnt",
+        "related_to": "Bezieht sich auf",
+        "reflects_on": "Reflektiert über",
+        "result_of": "Ergebnis von"
+      }
+    },
+    "export": {
+      "title": "Tagebuch exportieren",
+      "selected": "Ausgewählte Einträge",
+      "empty": "Noch keine Tagebucheinträge.",
+      "exportAllNote": "Alle Tagebucheinträge, ohne Datumsbegrenzung. Tage ohne Einträge werden nicht einbezogen.",
+      "defaultTitle": "Tagebuch-Export"
+    }
+  },
+  "therapy": {
+    "title": "Therapie",
+    "privacyBanner": "Privatsphäre-Modus: Therapienotizen bleiben vom Executive-Dashboard getrennt und werden nicht in allgemeine Exporte aufgenommen.",
+    "isolationNote": "Dieser Bereich bleibt vom Executive-Dashboard getrennt. Therapieinhalte erscheinen nie in Aufgabenansichten und werden nie in einen allgemeinen Projektexport aufgenommen.",
+    "newCollection": "Neue Sammlung",
+    "collectionNamePlaceholder": "Name der Sammlung",
+    "collections": "Sammlungen",
+    "collectionsEmpty": "Noch keine Therapie-Sammlungen.",
+    "layoutGroupLabel": "Therapie-Listenlayout",
+    "layoutList": "Liste",
+    "layoutColumns": "Zwei Spalten",
+    "layoutTiles": "Kacheln",
+    "collection": "Sammlung",
+    "collectionFallbackTitle": "Therapie-Sammlung",
+    "invalidCollectionId": "Ungültige Sammlungs-ID.",
+    "addRecord": "Notiz hinzufügen",
+    "recordsEmpty": "Noch keine Notizen in dieser Sammlung.",
+    "recordDetailTitle": "Therapienotiz",
+    "newRecordTitle": "Neue Therapienotiz",
+    "editRecordTitle": "Therapienotiz bearbeiten",
+    "createRecordSubmit": "Notiz erstellen",
+    "linkedTasks": "Verknüpfte Aufgaben",
+    "recordTypes": {
+      "note": "Notiz",
+      "exercise": "Übung",
+      "session_note": "Sitzungsnotiz",
+      "resource": "Ressource",
+      "reflection": "Reflexion"
+    },
+    "recordStatuses": {
+      "open": "Offen",
+      "in_progress": "In Bearbeitung",
+      "completed": "Abgeschlossen",
+      "archived": "Archiviert"
+    },
+    "form": {
+      "type": "Typ",
+      "occurredOn": "Datum des Geschehens",
+      "content": "Inhalt (Markdown)",
+      "saveSubmit": "Notiz speichern"
+    },
+    "reference": {
+      "taskId": "Aufgaben-ID",
+      "taskIdPlaceholder": "task-uuid",
+      "relation": "Beziehung",
+      "note": "Notiz (optional)",
+      "add": "Referenz hinzufügen",
+      "empty": "Noch keine verknüpften Aufgaben.",
+      "needTaskId": "Bitte gib eine Aufgaben-ID ein.",
+      "taskLoading": "Aufgaben werden geladen…",
+      "taskEmpty": "Keine Aufgaben zum Verknüpfen verfügbar.",
+      "taskLoadError": "Die Aufgabenliste konnte nicht geladen werden.",
+      "relations": {
+        "supports": "Unterstützt",
+        "prompted_by": "Veranlasst durch",
+        "evidence_for": "Beleg für",
+        "related_to": "Bezieht sich auf"
+      }
+    },
+    "export": {
+      "title": "Therapienotizen exportieren",
+      "intro": "Therapienotizen sind privat. Dieser Export ist ausdrücklich und auf die ausgewählten Notizen beschränkt.",
+      "selected": "Ausgewählte Notizen",
+      "empty": "Noch keine Therapienotizen.",
+      "exportAllNote": "Alle Therapienotizen, ohne Datumsbegrenzung.",
+      "confirmPrivacy": "Ich verstehe, dass dieser Export private Therapieinhalte enthalten kann, und möchte fortfahren.",
+      "noDate": "ohne Datum",
+      "defaultTitle": "Therapie-Export"
+    }
+  },
+  "notifications": {
+    "title": "Benachrichtigungen",
+    "subtitle": "Sanfte lokale Erinnerungen für Planung, Fokus, Tagebuch, Fristen und Rückblick. Jede Regel lässt sich einzeln deaktivieren, und eine verpasste Erinnerung markiert Arbeit nie als fehlgeschlagen.",
+    "permission": {
+      "aria": "Benachrichtigungsberechtigung",
+      "title": "Desktop-Berechtigung",
+      "checking": "Benachrichtigungsberechtigung wird geprüft…",
+      "granted": "Benachrichtigungen sind auf diesem Gerät erlaubt.",
+      "notGranted": "Benachrichtigungen sind noch nicht erlaubt.",
+      "denied": "Benachrichtigungen wurden abgelehnt. Aktivieren Sie sie in den Windows-Benachrichtigungseinstellungen erneut.",
+      "unavailable": "Der Berechtigungsstatus ist nur in der Desktop-App verfügbar.",
+      "request": "Benachrichtigungsberechtigung anfordern"
+    },
+    "privacyNote": "Privatsphäre-Grenze: Benachrichtigungen zeigen nur die pro Regel konfigurierte, sperrbildschirm-sichere Nachricht. Aufgabentitel, Tagebuchauszüge und Therapieinhalte sind nie enthalten.",
+    "rulesLoading": "Regeln werden geladen…",
+    "rulesEmpty": "Für diesen Arbeitsbereich wurden noch keine Erinnerungsregeln gefunden.",
+    "types": {
+      "planning": "Tagesplanung",
+      "focus": "Fokusblock",
+      "journaling": "Tagebuch",
+      "review": "Wochenrückblick",
+      "deadline": "Fristenprüfung"
+    },
+    "channels": {
+      "desktop": "Desktop",
+      "mobile": "Mobil",
+      "both": "Desktop und Mobil"
+    },
+    "escalations": {
+      "none": "Keine Eskalation",
+      "gentle": "Sanfte Nachfrage"
+    },
+    "deliveryStatuses": {
+      "scheduled": "Geplant",
+      "delivered": "Zugestellt",
+      "snoozed": "Geschummert",
+      "dismissed": "Ausgeblendet",
+      "failed": "Fehlgeschlagen"
+    },
+    "rule": {
+      "formAria": "Einstellungen für {{type}}-Erinnerungen",
+      "enableAria": "{{type}}-Erinnerungen aktivieren",
+      "enabled": "Aktiviert",
+      "sentToday_one": "{{count}} Erinnerung heute gesendet",
+      "sentToday_other": "{{count}} Erinnerungen heute gesendet",
+      "sentNone": "heute keine Erinnerung gesendet",
+      "preferredTime": "Bevorzugte Zeit",
+      "preferredTimeHelp": "Leer bedeutet, dass Erinnerungen außerhalb der Ruhezeit jederzeit eintreffen können.",
+      "quietStart": "Beginn der Ruhezeit",
+      "quietEnd": "Ende der Ruhezeit",
+      "quietEndHelp": "Ruhefenster über Nacht (Beginn später als Ende) sind unterstützt.",
+      "deadlineWindow": "Vorlauf für Fristenbenachrichtigungen (Tage)",
+      "deadlineWindowHelp": "Fristenwarnungen blicken 1–7 Tage voraus (Standard 3). Dashboard-Warnungen verwenden die separate Arbeitsbereichseinstellung.",
+      "maxPerDay": "Maximale Erinnerungen pro Tag",
+      "snooze": "Schummeloptionen (Minuten)",
+      "snoozeHelp": "Durch Komma getrennte Dauern, jede zwischen {{min}} und {{max}} Minuten, bis zu {{options}} Optionen.",
+      "safeMessage": "Datenschutzfreundliche Nachricht",
+      "safeMessageHelp": "Dies ist der einzige Text, den eine Benachrichtigung anzeigen darf. Er ist sperrbildschirm-sicher und wird nie mit Aufgabentiteln, Tagebuchauszügen oder Therapieinhalten kombiniert.",
+      "saveSubmit": "Regel speichern",
+      "saved": "Regel gespeichert.",
+      "dailyLimitError": "Das Tageslimit für Erinnerungen muss zwischen 0 und {{max}} liegen.",
+      "deadlineWindowError": "Das Fenster für Fristenbenachrichtigungen muss zwischen 1 und 7 Tagen liegen.",
+      "quietHoursError": "Die Ruhezeit benötigt unterschiedliche Start- und Endzeiten. Nachtfenster sind unterstützt.",
+      "snoozeWholeError": "Schummeloptionen müssen ganze Minuten sein.",
+      "snoozeRangeError": "Schummelminuten müssen zwischen {{min}} und {{max}} liegen.",
+      "snoozeDuplicateError": "Schummeloptionen dürfen keine doppelten Dauern enthalten.",
+      "snoozeCountError": "Eine Erinnerungsregel kann höchstens {{options}} Schummeloptionen konfigurieren.",
+      "safeMessageRequired": "Eine datenschutzfreundliche Benachrichtigungsnachricht ist erforderlich.",
+      "safeMessageTooLong": "Die datenschutzfreundliche Nachricht ist zu lang (höchstens {{max}} Zeichen)."
+    },
+    "history": {
+      "aria": "Benachrichtigungsverlauf",
+      "title": "Letzte Benachrichtigungen",
+      "privacyNote": "Hier wird nur der sperrbildschirm-sichere Erinnerungstext angezeigt. Aufgabentitel, Tagebuchauszüge und Therapieinhalte erscheinen nie in dieser Liste.",
+      "loading": "Benachrichtigungen werden geladen…",
+      "empty": "Es wurden noch keine Benachrichtigungen geplant.",
+      "rowLabel": "Benachrichtigung: {{message}}.",
+      "rowLabelTarget": "Benachrichtigung: {{message}}. Aktivieren, um zu {{entity}} zu navigieren.",
+      "scheduled": "Geplant {{date}}",
+      "delivered": "zugestellt {{date}}",
+      "snoozeAction": "{{minutes}} Min. schlummern",
+      "clear": "Leeren",
+      "clearAria": "Benachrichtigungsverlauf leeren",
+      "clearConfirm": "Gesamten Benachrichtigungsverlauf leeren? Dies entfernt nur den Verlauf in der App; geplante Zustellungen bleiben erhalten.",
+      "cleared_one": "{{count}} Verlaufseintrag entfernt.",
+      "cleared_other": "{{count}} Verlaufseinträge entfernt."
+    },
+    "consent": {
+      "title": "Desktop-Benachrichtigungen erlauben?",
+      "body": "Albada möchte sanfte lokale Erinnerungen für Planung, Fokus, Tagebuch, Fristen und Rückblick anzeigen. Mit „Benachrichtigungen erlauben“ wird außerdem die Windows-Berechtigungsabfrage geöffnet.",
+      "privacy": "Ihre Privatsphäre bleibt gewahrt: Benachrichtigungstexte sind generisch und sperrbildschirm-sicher. Sie enthalten nie Aufgabentitel, Tagebuchauszüge oder Therapieinhalte, und alles bleibt auf diesem Computer.",
+      "allow": "Benachrichtigungen erlauben",
+      "requesting": "Berechtigung wird angefordert…",
+      "notNow": "Jetzt nicht",
+      "later": "Sie können das später in Einstellungen → Benachrichtigungen ändern."
+    }
+  },
+  "import": {
+    "fingerprintLabel": "Signatur:",
+    "entityTypes": {
+      "journal_entry": "Tagebucheintrag",
+      "therapy_record": "Therapieeintrag",
+      "task": "Aufgabe",
+      "goal": "Ziel",
+      "project": "Projekt",
+      "note": "Notiz"
+    },
+    "decisions": {
+      "ignore": "Ignorieren"
+    },
+    "confidence": {
+      "high": "Hohe Sicherheit",
+      "medium": "Mittlere Sicherheit",
+      "low": "Geringe Sicherheit",
+      "review": "Prüfung erforderlich"
+    },
+    "report": {
+      "aria": "Importbericht für {{sourceRoot}}",
+      "title": "Importbericht",
+      "source": "Quelle:",
+      "status": "Status:",
+      "summary": "Zusammenfassung",
+      "nothingImported": "Es wurde nichts importiert.",
+      "warnings": "Warnungen",
+      "showWarnings": "Warnungen anzeigen ({{count}})",
+      "hideWarnings": "Warnungen ausblenden ({{count}})",
+      "noWarnings": "Keine Warnungen.",
+      "reviewItems": "Zu prüfende Elemente ({{count}})",
+      "reviewEmpty": "Es müssen keine Elemente geprüft werden.",
+      "untitled": "(ohne Titel)",
+      "decision": "Entscheidung",
+      "decisionSelect": "Auswählen…",
+      "decisionAria": "Entscheidung für {{title}}",
+      "accept": "Übernehmen",
+      "reject": "Ablehnen",
+      "placeholderNotice": "Prüfentscheidungen werden noch nicht gespeichert. Übernehmen, Ablehnen und Bearbeiten werden in einer späteren Phase aktiviert."
+    }
+  }
+}

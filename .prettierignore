@@ -1,0 +1,15 @@
+README.md
+CONTRIBUTING.md
+SECURITY.md
+docs/
+# Byte-pinned synthetic test inputs (importer/fixture assertions read them
+# verbatim): data, not source, never reformatted. Explicit path — deliberately
+# not the private repo's global `records/`-style patterns, which also masked
+# app source from the format gate.
+src-tauri/fixtures/legacy/
+src-tauri/src/export/templates/foundation-journal/template.md
+node_modules/
+dist/
+coverage/
+src-tauri/target/
+src-tauri/gen/

@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en" class="joi-booting">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Native canvas/scrollbar hint, applied before any stylesheet loads. -->
+    <meta name="color-scheme" content="light dark" />
+    <title>Albada</title>
+
+    <style>
+      /* -------------------------------------------------------------------------
+         Initial document canvas (html/body) before any external stylesheet is
+         parsed. Scoped to the boot state via the `joi-booting` class: once
+         src/index.css (design-system.css) loads it owns the body canvas through
+         --color-joi-canvas, and these rules retire with the class, so nothing
+         here competes with the app stylesheets. The values mirror the canvas
+         token pair (light #f8fafc / dark #020617) and the native window
+         backgroundColor in src-tauri/tauri.conf.json, so window -> document ->
+         splash -> React hand-off never exposes a white frame. The `.dark`
+         variant is activated by the theme bootstrap script below, before the
+         body is parsed.
+         ------------------------------------------------------------------------- */
+      html.joi-booting,
+      html.joi-booting body {
+        background-color: #f8fafc;
+      }
+
+      html.joi-booting.dark,
+      html.joi-booting.dark body {
+        background-color: #020617;
+      }
+    </style>
+
+    <style>
+      /* -------------------------------------------------------------------------
+         Startup splash: critical CSS.
+
+         Inlined on purpose. src/index.css only arrives once the module graph has
+         been fetched and evaluated, so a splash styled from that file would
+         itself flash. Every selector below is class-based (never an element
+         selector) so these rules keep beating Tailwind's element-level preflight
+         whatever order the two stylesheets end up in.
+         ------------------------------------------------------------------------- */
+      .albada-splash {
+        /* Palette mirrors the central token contract, so the hand-off to React
+           has no visible seam. Property -> token:
+           --joi-bg -> --color-joi-canvas
+           --joi-surface -> --color-joi-surface
+           --joi-border -> --color-joi-border
+           --joi-text -> --color-joi-text
+           --joi-muted -> --color-joi-text-muted
+           --joi-track -> --color-joi-surface-sunken
+           --joi-accent -> --color-joi-brand-violet (canonical Aurora violet,
+             theme-invariant, so the .dark branch repeats the same hex)
+           --joi-glow -> a violet tint of that same accent
+           --joi-shadow -> the neutral shadow pair (no brand hue)
+           A mirrored value and its token change in the same edit; see
+           docs/ui-style-guide.md, Exception 1. */
+        --joi-bg: #f8fafc;
+        --joi-surface: #ffffff;
+        --joi-border: #e2e8f0;
+        --joi-text: #0f172a;
+        --joi-muted: #64748b;
+        --joi-accent: #7c3aed;
+        --joi-track: #f1f5f9;
+        --joi-glow: rgb(124 58 237 / 0.16);
+        --joi-shadow: 0 1px 2px rgb(15 23 42 / 0.06), 0 14px 34px -14px rgb(15 23 42 / 0.22);
+        position: fixed;
+        inset: 0;
+        z-index: 2147483000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        overflow: hidden;
+        padding: clamp(1.5rem, 6vw, 3rem);
+        background-color: var(--joi-bg);
+        background-image: radial-gradient(120% 80% at 50% 8%, var(--joi-glow), transparent 62%);
+        color: var(--joi-text);
+        /* Matches Tailwind's default --font-sans stack so type does not shift. */
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        text-align: center;
+        opacity: 1;
+        transition: opacity 380ms ease;
+      }
+
+      /* Same .dark contract as @custom-variant dark in src/index.css, so the
+         splash follows the theme bootstrap below and ThemeProvider.
+         Only the glow opacity differs between themes: the brand accent is
+         canonical and theme-invariant, so it repeats the same hex here. */
+      html.dark .albada-splash {
+        --joi-bg: #020617;
+        --joi-surface: #0f172a;
+        --joi-border: #1e293b;
+        --joi-text: #f1f5f9;
+        --joi-muted: #94a3b8;
+        --joi-accent: #7c3aed;
+        --joi-track: #020617;
+        --joi-glow: rgb(124 58 237 / 0.14);
+        --joi-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 14px 34px -14px rgb(0 0 0 / 0.65);
+      }
+
+      .albada-splash__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(1rem, 3.5vh, 1.75rem);
+        width: 100%;
+        max-width: 30rem;
+        animation: albada-splash-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      .albada-splash__mark {
+        display: grid;
+        place-items: center;
+        width: clamp(4.5rem, 20vmin, 6.5rem);
+        height: clamp(4.5rem, 20vmin, 6.5rem);
+        flex-shrink: 0;
+        box-sizing: border-box;
+        border: 1px solid var(--joi-border);
+        border-radius: clamp(1.25rem, 4vmin, 1.75rem);
+        background-color: var(--joi-surface);
+        box-shadow: var(--joi-shadow);
+        color: var(--joi-accent);
+        animation: albada-splash-breathe 2.4s ease-in-out infinite;
+      }
+
+      .albada-splash__svg {
+        display: block;
+        width: 62%;
+        height: 62%;
+        color: inherit;
+      }
+
+      .albada-splash__stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0.375rem;
+        width: 100%;
+        min-width: 0;
+      }
+
+      .albada-splash__title {
+        margin: 0;
+        font-size: clamp(1.125rem, 1rem + 0.9vw, 1.5rem);
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: 0.01em;
+        color: var(--joi-text);
+        text-wrap: balance;
+      }
+
+      .albada-splash__subtitle {
+        margin: 0;
+        font-size: clamp(0.8125rem, 0.78rem + 0.2vw, 0.9375rem);
+        line-height: 1.5;
+        color: var(--joi-muted);
+        text-wrap: balance;
+      }
+
+      /* Indeterminate progress: decorative only, the status text announces it. */
+      .albada-splash__bar {
+        position: relative;
+        width: min(15rem, 72vw);
+        height: 0.25rem;
+        border-radius: 999px;
+        background-color: var(--joi-track);
+        overflow: hidden;
+      }
+
+      .albada-splash__bar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40%;
+        border-radius: inherit;
+        background-image: linear-gradient(90deg, transparent, var(--joi-accent), transparent);
+        animation: albada-splash-sweep 1.35s ease-in-out infinite;
+      }
+
+      .albada-splash__noscript {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: var(--joi-muted);
+      }
+
+      /* Dismissal state, added by the boot script once React has mounted. */
+      .albada-splash--leaving {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 380ms ease,
+          visibility 0s linear 380ms;
+      }
+
+      @keyframes albada-splash-enter {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @keyframes albada-splash-breathe {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.035);
+        }
+      }
+
+      @keyframes albada-splash-sweep {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(250%);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .albada-splash,
+        .albada-splash--leaving {
+          transition: none;
+        }
+
+        .albada-splash__inner,
+        .albada-splash__mark,
+        .albada-splash__bar::after {
+          animation: none;
+        }
+      }
+    </style>
+
+    <script>
+      // Prevent white flash on startup: read stored theme or prefers-color-scheme
+      // and set the .dark class on <html> before React mounts.
+      (function () {
+        const html = document.documentElement;
+        try {
+          const stored = localStorage.getItem("albada-theme");
+          if (stored) {
+            if (stored === "dark") {
+              html.classList.add("dark");
+              html.style.colorScheme = "dark";
+            } else {
+              html.classList.remove("dark");
+              html.style.colorScheme = "light";
+            }
+          } else {
+            // No stored preference: honor the OS
+            const mql = window.matchMedia("(prefers-color-scheme: dark)");
+            if (mql.matches) {
+              html.classList.add("dark");
+              html.style.colorScheme = "dark";
+            }
+            // Listen for OS changes (simple one-shot; app will re-evaluate on mount)
+            mql.addEventListener("change", (e) => {
+              if (e.matches) {
+                html.classList.add("dark");
+                html.style.colorScheme = "dark";
+              } else {
+                html.classList.remove("dark");
+                html.style.colorScheme = "light";
+              }
+            });
+          }
+        } catch (_e) {
+          // localStorage not available (e.g. test environment); honor OS only
+          const mql = window.matchMedia("(prefers-color-scheme: dark)");
+          if (mql.matches) {
+            html.classList.add("dark");
+            html.style.colorScheme = "dark";
+          }
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <!--
+      Static splash: painted from the first frame, independent of the JS bundle.
+      Removed by the boot script below as soon as React commits a render.
+    -->
+    <div
+      id="albada-splash"
+      class="albada-splash"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading Albada"
+    >
+      <div class="albada-splash__inner">
+        <div class="albada-splash__mark">
+          <svg
+            class="albada-splash__svg"
+            viewBox="0 0 48 48"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-labelledby="albada-splash-mark-title"
+            focusable="false"
+          >
+            <title id="albada-splash-mark-title">Albada</title>
+            <!-- Progress arc with a checkmark: progress always comes from work. -->
+            <circle
+              cx="24"
+              cy="24"
+              r="17"
+              fill="none"
+              stroke="currentColor"
+              stroke-opacity="0.2"
+              stroke-width="3.2"
+            />
+            <path
+              d="M24 7A17 17 0 1 0 38.72 15.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3.2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M17 24.2 21.6 28.8 31.6 17.4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div class="albada-splash__stack">
+          <h1 class="albada-splash__title">Albada</h1>
+          <p class="albada-splash__subtitle">Preparing your workspace&hellip;</p>
+        </div>
+        <div class="albada-splash__bar" aria-hidden="true"></div>
+        <noscript>
+          <p class="albada-splash__noscript">JavaScript is required to start Albada.</p>
+        </noscript>
+      </div>
+    </div>
+
+    <div id="root"></div>
+
+    <script>
+      // Fade the splash out once React has actually mounted.
+      // This is a classic inline script placed before the deferred module
+      // script, so the observer is always registered before main.tsx executes.
+      (function () {
+        const splash = document.getElementById("albada-splash");
+        const root = document.getElementById("root");
+        if (!splash || !root) return;
+
+        const FADE_MS = 380;
+        // Failsafe: the splash must never outlive the app, even if mounting
+        // throws before #root receives any children (ErrorBoundary included).
+        const FAILSAFE_MS = 8000;
+        // Minimum visible interval, measured from this script's initialization.
+        // A cached module graph can reach #root in a couple of frames, which
+        // would flash the splash instead of showing it, so the fade cannot start
+        // before this has elapsed. FAILSAFE_MS is far above it, so a real stall
+        // still dismisses immediately.
+        const MIN_VISIBLE_MS = 1200;
+        const startedAt = Date.now();
+        const timers = [];
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        let dismissed = false;
+
+        function removeSplash() {
+          if (splash.parentNode) splash.parentNode.removeChild(splash);
+          document.documentElement.classList.remove("joi-booting");
+        }
+
+        function dismiss() {
+          if (dismissed) return;
+          dismissed = true;
+          observer.disconnect();
+          timers.forEach((id) => window.clearTimeout(id));
+          timers.length = 0;
+          // Honor the minimum visible interval: either fade now or wait out the
+          // remainder before fading. Only one of these paths ever runs, because
+          // `dismissed` is already latched and the timers above were cancelled.
+          const remaining = Math.max(0, MIN_VISIBLE_MS - (Date.now() - startedAt));
+          if (remaining > 0) {
+            timers.push(window.setTimeout(startFade, remaining));
+          } else {
+            startFade();
+          }
+        }
+
+        function startFade() {
+          splash.classList.add("albada-splash--leaving");
+          const wait = reduceMotion.matches ? 0 : FADE_MS;
+          timers.push(window.setTimeout(removeSplash, wait));
+        }
+
+        function scheduleDismiss() {
+          // React 19 commits asynchronously. Waiting two frames guarantees the
+          // first paint of the app happens before the splash starts fading,
+          // so no empty app frame is ever exposed.
+          window.requestAnimationFrame(function () {
+            window.requestAnimationFrame(function () {
+              if (root.childElementCount > 0) dismiss();
+            });
+          });
+        }
+
+        const observer = new MutationObserver(function () {
+          if (root.childElementCount > 0) scheduleDismiss();
+        });
+        observer.observe(root, { childList: true });
+
+        timers.push(window.setTimeout(dismiss, FAILSAFE_MS));
+
+        // The module graph can already be cached and #root already populated
+        // by the time this runs, so check the current state too.
+        if (root.childElementCount > 0) scheduleDismiss();
+      })();
+    </script>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

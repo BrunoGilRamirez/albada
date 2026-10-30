@@ -1,0 +1,1151 @@
+{
+  "settings": {
+    "language": {
+      "label": "Language",
+      "description": "Choose the application language. System follows the Windows language and nothing leaves this device.",
+      "system": "System",
+      "en-US": "English (United States)",
+      "es-ES": "Español (España)",
+      "de-DE": "Deutsch (Deutschland)",
+      "fr-FR": "Français (France)",
+      "saved": "Language preference saved. The app now uses {{language}}."
+    },
+    "title": "Settings",
+    "subtitle": "Workspace preferences, archived tasks, and backups.",
+    "sections": {
+      "aria": "Settings sections",
+      "commitments": "Fixed commitments",
+      "availability": "Availability",
+      "import": "Legacy import",
+      "notifications": "Notifications"
+    },
+    "workspace": {
+      "label": "Workspace",
+      "value": "Workspace {{id}}…"
+    },
+    "warningWindow": {
+      "label": "Deadline warning window",
+      "help": "How many days before a deadline a task counts as approaching. Between 0 and 90. Currently {{days}} days.",
+      "invalid": "The warning window must be between 0 and 90 days.",
+      "saved": "Deadline warning window set to {{days}} days."
+    },
+    "archived": {
+      "title": "Archived tasks",
+      "help": "Tasks hidden by \"Archive subtree\" appear here so you can restore them.",
+      "empty": "No archived tasks.",
+      "restored": "Task restored."
+    },
+    "backups": {
+      "title": "Backups",
+      "help": "Backups may contain sensitive data. Keep them in a safe place. Restoring replaces all current data after an explicit confirmation.",
+      "create": "Create backup",
+      "creating": "Creating backup…",
+      "creatingHelp": "The app is copying and validating your local data. You can continue using the app; this may take a moment.",
+      "restoring": "Restoring backup… Please wait while the application reloads your data.",
+      "created": "Backup created. Backups may contain sensitive data.",
+      "deleted": "Backup deleted.",
+      "delete": "Delete",
+      "deleteAria": "Delete this backup",
+      "deleteConfirm": "Delete this backup and its metadata? This cannot be undone.",
+      "restoreAria": "Restore this backup",
+      "kinds": {
+        "recovery": "Recovery copy",
+        "user": "Backup"
+      },
+      "restoreKind": {
+        "recovery": "recovery copy",
+        "user": "user backup"
+      },
+      "restoreConfirmTitle": "Restore this {{kind}} from {{createdAt}}",
+      "restoreConfirmDetail": "({{size}} KB, schema v{{schema}}, checksum {{checksum}})?",
+      "restoreConfirmWarning": "Restoring REPLACES ALL current data in this workspace and cannot be undone.",
+      "restoreConfirmPrivacy": "The backup may contain personal writing, journal records, and therapy records.",
+      "restoreFailed": "The backup failed validation. Restore was cancelled.",
+      "restoreMissingChecksum": "The backup validation did not return a checksum. Restore was cancelled.",
+      "restored": "Backup restored. All data now reflects the restored backup.",
+      "schemaUnknown": "unknown"
+    },
+    "backupReminder": {
+      "aria": "Backup reminder preference",
+      "title": "Backup reminders",
+      "help": "A separate workspace preference, not one of the reminder categories. It only prompts you to run a manual backup; the app never creates a backup automatically.",
+      "enableAria": "Enable backup reminders",
+      "enabled": "Enabled",
+      "interval": "Reminder interval (days)",
+      "intervalHelp": "Between {{min}} and {{max}} days. {{recommended}} days is the recommended interval. Changing the interval affects only the next cycle that has not been recorded yet.",
+      "intervalWholeError": "The backup reminder interval must be a whole number of days.",
+      "intervalRangeError": "The backup reminder interval must be between {{min}} and {{max}} days.",
+      "lastValidated": "Last validated manual backup: {{timestamp}}.",
+      "lastValidatedNone": "No validated manual backup recorded yet.",
+      "timestampNote": "This timestamp advances only after a manual backup passes integrity and checksum validation. A reminder never changes it.",
+      "safeMessageNote": "When due, the reminder shows only the fixed lock-screen-safe text \"{{message}}\". It cannot be edited here and never includes file names, paths, or personal content.",
+      "scheduleNote": "Reminders arrive at the fixed 09:00 UTC slot, never inside the 22:00–07:00 UTC quiet window, and at most once per interval cycle. They do not count against reminder-category daily limits.",
+      "saved": "Backup reminder preference saved.",
+      "saveSubmit": "Save preference"
+    },
+    "diagnostics": {
+      "title": "Diagnostics",
+      "help": "Local runtime versions and document converter status.",
+      "compilerVersion": "Typst compiler",
+      "capability": "Bundled capability",
+      "statusValid": "Available",
+      "statusInvalid": "Unavailable",
+      "unavailableResources": "Missing: {{resources}}",
+      "template": "Journal template",
+      "fonts": "Fonts",
+      "fontsAvailable": "{{count}} embedded fonts",
+      "environment": "Environment",
+      "sqliteVersion": "SQLite",
+      "tauriVersion": "Tauri runtime",
+      "osVersion": "Operating system",
+      "unavailable": "Diagnostics are unavailable in this session."
+    },
+    "availability": {
+      "title": "Availability",
+      "subtitle": "Usual windows when attention may be available, per weekday. This is suggestion input only; it never prevents work outside the profile.",
+      "weekday": "Weekday",
+      "energy": "Energy expectation (optional)",
+      "energyPlaceholder": "e.g. high, medium, low",
+      "start": "Start",
+      "end": "End",
+      "preferredLength": "Preferred block length (minutes)",
+      "addSubmit": "Add profile",
+      "updateSubmit": "Update profile",
+      "cancelEdit": "Cancel edit",
+      "profiles": "Profiles",
+      "profilesEmpty": "No availability profiles yet.",
+      "added": "Profile added.",
+      "updated": "Profile updated.",
+      "blockLength": "{{minutes}} min blocks",
+      "noPreferredLength": "no preferred length"
+    },
+    "commitments": {
+      "title": "Fixed commitments",
+      "subtitle": "Immovable events such as work, sleep, meals, or appointments. They are context for planning and never affect progress.",
+      "type": "Type",
+      "start": "Start (optional)",
+      "end": "End (optional)",
+      "duration": "Duration minutes (optional)",
+      "movable": "Movable (can be rescheduled more easily)",
+      "addSubmit": "Add commitment",
+      "added": "Commitment added.",
+      "listTitle": "All commitments",
+      "empty": "No commitments yet.",
+      "movableBadge": "movable",
+      "fixedBadge": "fixed",
+      "minutes": "{{minutes}} min"
+    },
+    "import": {
+      "title": "Legacy import",
+      "subtitle": "Import a Proyecto Vida repository without modifying it. Source files are read-only, and everything stays on this device.",
+      "sourceRoot": "Legacy repository root path",
+      "fullScan": "Import the full repository",
+      "includePaths": "Include only these paths (one per line, relative to the repository root)",
+      "includePathsHelp": "Only the listed subtrees are read. Leave the checkbox above unchecked to restrict the import, or check it to scan the whole repository.",
+      "previewSubmit": "Preview import",
+      "previewing": "Preparing preview…",
+      "scanning": "Scanning the repository without importing records…",
+      "needPath": "Enter the path to the legacy repository root before importing.",
+      "notComplete": "The import did not complete. Review the report for details.",
+      "commitSubmit": "Review decisions and commit",
+      "committing": "Confirming…",
+      "needDecisions": "Choose a decision for every review item before committing.",
+      "runSubmit": "Import without review",
+      "importing": "Importing…",
+      "statusLine": "Import status: {{status}}",
+      "statusStarting": "Starting…",
+      "statusRunning": "The import is running in the background. You can keep using the app while it finishes.",
+      "staleHint": "{{message}} Preview again to refresh the fingerprint, then review and confirm."
+    }
+  },
+  "errors": {
+    "VALIDATION": "Please check the information and try again.",
+    "NOT_FOUND": "The requested item could not be found.",
+    "DATABASE": "Your local data could not be saved. Please try again.",
+    "IO": "The local file operation could not be completed.",
+    "UNKNOWN": "Something unexpected happened. Please try again."
+  },
+  "common": {
+    "taskCount_one": "{{count}} task",
+    "taskCount_other": "{{count}} tasks",
+    "loading": "Loading…",
+    "saving": "Saving…",
+    "creating": "Creating…",
+    "deadlineDate": "deadline {{date}}",
+    "actions": {
+      "activate": "Activate",
+      "add": "Add",
+      "addExistingProject": "Add existing project",
+      "addExistingTask": "Add existing task",
+      "adding": "Adding…",
+      "apply": "Apply",
+      "archive": "Archive",
+      "back": "Back",
+      "cancel": "Cancel",
+      "close": "Close",
+      "collapse": "Collapse",
+      "complete": "Complete",
+      "confirmArchive": "Confirm archive",
+      "continue": "Continue",
+      "create": "Create",
+      "deactivate": "Deactivate",
+      "defer": "Defer",
+      "delete": "Delete",
+      "deselect": "Deselect",
+      "dismiss": "Dismiss",
+      "edit": "Edit",
+      "expand": "Expand",
+      "export": "Export",
+      "finish": "Finish",
+      "next": "Next",
+      "pause": "Pause",
+      "previous": "Prev",
+      "remove": "Remove",
+      "replan": "Replan",
+      "restore": "Restore",
+      "resume": "Resume",
+      "save": "Save",
+      "saveChanges": "Save changes",
+      "skip": "Skip",
+      "snooze": "Snooze",
+      "start": "Start",
+      "viewProgressDetails": "View progress details"
+    },
+    "fields": {
+      "priority": "Priority",
+      "status": "Status",
+      "targetDate": "Target date",
+      "title": "Title"
+    },
+    "labels": {
+      "taskStatus": {
+        "inbox": "Inbox",
+        "planned": "Planned",
+        "in_progress": "In progress",
+        "blocked": "Blocked",
+        "completed": "Completed",
+        "cancelled": "Cancelled",
+        "deferred": "Deferred"
+      },
+      "priority": {
+        "none": "None",
+        "low": "Low",
+        "normal": "Normal",
+        "high": "High",
+        "critical": "Critical"
+      },
+      "commitmentType": {
+        "sleep": "Sleep",
+        "meal": "Meal",
+        "work": "Work",
+        "appointment": "Appointment",
+        "exercise": "Exercise",
+        "other": "Other"
+      },
+      "goalStatus": {
+        "inbox": "Inbox",
+        "active": "Active",
+        "paused": "Paused",
+        "achieved": "Achieved",
+        "abandoned": "Abandoned",
+        "archived": "Archived"
+      },
+      "projectStatus": {
+        "inbox": "Inbox",
+        "planned": "Planned",
+        "active": "Active",
+        "paused": "Paused",
+        "completed": "Completed",
+        "cancelled": "Cancelled",
+        "archived": "Archived"
+      },
+      "effortSize": {
+        "trivial": "Trivial",
+        "small": "Small",
+        "medium": "Medium",
+        "large": "Large",
+        "very_large": "Very large"
+      },
+      "deadlineStatus": {
+        "none": "No deadline",
+        "normal": "On track",
+        "approaching": "Approaching",
+        "overdue": "Overdue",
+        "blocked_risk": "Blocked at risk"
+      },
+      "progressState": {
+        "no_tasks": "No tasks",
+        "not_started": "Not started",
+        "archived": "Archived",
+        "cancelled": "Cancelled",
+        "abandoned": "Abandoned"
+      },
+      "severity": {
+        "info": "Info",
+        "warning": "Warning",
+        "error": "Error"
+      },
+      "jobStatus": {
+        "queued": "Queued",
+        "running": "Running",
+        "completed": "Completed",
+        "failed": "Failed",
+        "cancelled": "Cancelled"
+      },
+      "weekday": {
+        "sunday": "Sunday",
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday"
+      },
+      "content": "Content",
+      "description": "Description",
+      "whyItMatters": "Why it matters",
+      "taskTree": "Task tree"
+    },
+    "markdown": {
+      "preview": "Preview",
+      "previewRegion": "{{label}} preview",
+      "empty": "No content yet.",
+      "toolbarLabel": "Markdown formatting",
+      "bold": "Bold",
+      "italic": "Italic",
+      "link": "Link",
+      "list": "List",
+      "headingSelect": "Insert heading",
+      "headingPlaceholder": "Heading…",
+      "headingOption": "Heading {{level}} ({{markers}})",
+      "headingHelp": "Heading help",
+      "headingHelpTitle": "You don't need to use # for the title: the Title field already adds it. Use ## or deeper levels only for subheadings inside the content.",
+      "viewModeLabel": "Markdown view",
+      "viewSplit": "Split",
+      "viewEditor": "Editor only",
+      "viewPreview": "Preview only",
+      "dictionaryAdd": "Add to Windows dictionary",
+      "dictionaryAdded": "Added to Windows dictionary",
+      "dictionaryError": "Could not update Windows dictionary"
+    },
+    "export": {
+      "format": "Format",
+      "template": "Template",
+      "from": "From",
+      "to": "To",
+      "exportAll": "Export all",
+      "exportButton": "Export {{format}}",
+      "exporting": "Exporting...",
+      "preparing": "Preparing export…",
+      "running": "Running…",
+      "stalePreview": "The selection changed since it was previewed. Re-preview before exporting.",
+      "rePreview": "Re-preview selection",
+      "valid": "valid",
+      "invalid": "invalid",
+      "unavailable": "unavailable: {{resources}}",
+      "formats": {
+        "markdown": "Markdown",
+        "typst": "Typst",
+        "pdf": "PDF"
+      }
+    },
+    "progress": {
+      "detailsFor": "Progress details for {{title}}",
+      "explainer": "Progress comes from eligible leaf tasks weighted by effort points.",
+      "close": "Close progress details",
+      "pointsSummary_one": "{{completed}} of {{total}} effort points completed across {{countDisplay}} leaf task.",
+      "pointsSummary_other": "{{completed}} of {{total}} effort points completed across {{countDisplay}} leaf tasks.",
+      "done": "done",
+      "pointsValue": "{{points}} pts",
+      "empty": "No eligible leaf tasks contribute to this scope yet.",
+      "loading": "Loading progress details…"
+    },
+    "exportPreview": {
+      "title": "Export preview",
+      "itemCount_one": "{{count}} item",
+      "itemCount_other": "{{count}} items",
+      "truncatedCount": "(showing first {{shown}})",
+      "largeSelection": "Large selection: showing the first {{shown}} of {{total}} items. The export itself includes all {{total}}.",
+      "therapyWarning": "This selection includes therapy-private content. Confirm before exporting.",
+      "fingerprintLabel": "Selection fingerprint",
+      "fingerprintHelp": "Confirms the exact items and content you are exporting.",
+      "contentFingerprintTitle": "Content fingerprint (not the source text)"
+    },
+    "exportJob": {
+      "title": "Export job",
+      "ariaLabel": "Export job {{status}}",
+      "failedSourceSaved": "The export failed, but the Markdown source was saved.",
+      "diagnostics": "Diagnostics ({{count}})",
+      "diagnosticCounts": "{{errors}} errors · {{warnings}} warnings · {{info}} info",
+      "copyDiagnostics": "Copy safe diagnostic summary",
+      "open": "Open",
+      "localArtifacts": "Local artifacts ({{count}})",
+      "unknownSize": "unknown size",
+      "bytes": "{{size}} B",
+      "kilobytes": "{{size}} KB",
+      "megabytes": "{{size}} MB",
+      "formats": {
+        "md": "Markdown",
+        "normalized_md": "Normalized Markdown",
+        "typ": "Typst",
+        "pdf": "PDF",
+        "diagnostics": "Diagnostics",
+        "unknown": "Diagnostic"
+      }
+    },
+    "exportHistory": {
+      "title": "Previous exports",
+      "subtitle": "Reopen generated files from this workspace.",
+      "count_one": "{{count}} export",
+      "count_other": "{{count}} exports",
+      "empty": "No exports have been generated yet.",
+      "deleteConfirm": "Delete export \"{{title}}\" and its files?",
+      "openFormat": "Open {{format}}",
+      "saveCopy": "Save copy",
+      "noArtifact": "No output artifact was produced.",
+      "formats": {
+        "md": "Markdown",
+        "typ": "Typst",
+        "pdf": "PDF"
+      }
+    },
+    "jobProgress": {
+      "title": "Job progress",
+      "ariaLabel": "Job progress: {{phase}}",
+      "percent": "{{percent}}%",
+      "percentMax": "/ 100%",
+      "pending": "Pending…",
+      "cancelNote": "Cancelling stops the job at the next safe point; navigation stays usable while it finishes.",
+      "backgroundNote": "You can navigate elsewhere; the job continues in the background.",
+      "closeAria": "Close progress dialog"
+    },
+    "feedback": {
+      "errorTitle": "We could not display this view",
+      "reload": "Reload application"
+    }
+  },
+  "shell": {
+    "primaryNav": "Primary navigation",
+    "breadcrumb": "Breadcrumb",
+    "nav": {
+      "today": "Today",
+      "analytics": "Analytics",
+      "calendar": "Calendar",
+      "projects": "Projects",
+      "goals": "Goals",
+      "tasks": "Tasks",
+      "journal": "Journal",
+      "therapy": "Therapy",
+      "settings": "Settings"
+    },
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System",
+      "switchToLight": "Switch to light mode",
+      "switchToDark": "Switch to dark mode"
+    },
+    "palette": {
+      "label": "Command palette",
+      "searchLabel": "Command palette search",
+      "placeholder": "Search is coming soon...",
+      "note": "Search will be added in a later phase. It must exclude therapy content and journal text; therapy records and journal bodies must never be surfaced here."
+    },
+    "bell": {
+      "label": "Notifications",
+      "unread_one": "Notifications ({{count}} unread)",
+      "unread_other": "Notifications ({{count}} unread)",
+      "loading": "Loading notifications…"
+    }
+  },
+  "today": {
+    "title": "Today",
+    "notToday": "(not today)",
+    "planningRitual": "Planning ritual",
+    "planStatus": "Plan status",
+    "planStatuses": {
+      "not_started": "Not started",
+      "planning": "Planning",
+      "planned": "Planned",
+      "in_review": "In review",
+      "closed": "Closed"
+    },
+    "selectedTasks": "Selected tasks",
+    "blocks": {
+      "title": "Blocks",
+      "scheduled": {
+        "title": "Scheduled blocks",
+        "empty": "No blocks are scheduled ahead.",
+        "loadMore": "Load more",
+        "nextOccurrence": "Next occurrence: {{date}}",
+        "deleteConfirm": "Delete this routine? Future occurrences will be withdrawn; historical records will be kept.",
+        "loadFailed": "The scheduled blocks could not be loaded."
+      },
+      "inactive": {
+        "title": "Inactive blocks",
+        "empty": "No inactive blocks.",
+        "loadFailed": "The inactive blocks could not be loaded.",
+        "oneTime": "One-time block",
+        "routine": "Weekly routine",
+        "reactivate": "Reactivate",
+        "delete": "Delete",
+        "deleteConfirm": "Delete this block? It leaves the schedule but stays in the history.",
+        "reactivated": "The block was reactivated.",
+        "seriesReactivatedNotice": "This routine is active again. To change its weekdays, open its next occurrence and use Edit."
+      }
+    },
+    "deadlineWarnings": "Deadline warnings",
+    "fixedCommitments": "Fixed commitments",
+    "noCommitments": "No active commitments today.",
+    "task": {
+      "empty": "No tasks selected for today yet.",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "divideIntoChildren": "Divide into children…"
+    },
+    "replan": {
+      "move_to_next_day": "Move to next day",
+      "return_to_planned": "Return to planned",
+      "remove_date": "Remove date",
+      "defer": "Defer",
+      "divide": "Divide into children"
+    },
+    "deadline": {
+      "empty": "No tasks are approaching their deadlines.",
+      "statuses": {
+        "overdue": "Overdue",
+        "blocked_risk": "Blocked risk",
+        "approaching": "Approaching",
+        "normal": "Normal",
+        "none": "None"
+      }
+    },
+    "block": {
+      "empty": "No blocks yet. Blocks are flexible intention spaces; exact times are optional.",
+      "add": "+ Add block",
+      "noTime": "no exact time",
+      "recurring": "Weekly",
+      "deactivate": "Deactivate",
+      "deactivateRoutine": "Deactivate routine",
+      "delete": "Delete",
+      "deleteRoutine": "Delete routine",
+      "deleteConfirm": "Delete this block? It leaves the schedule but stays in the history.",
+      "durationMinutes_one": "{{count}} min",
+      "durationMinutes_other": "{{count}} min",
+      "refreshFailed": "The recurrence was saved, but this day's list could not be refreshed. The latest occurrences will appear when the day reloads.",
+      "types": {
+        "planning": "Planning",
+        "focus": "Focus",
+        "review": "Review",
+        "journaling": "Journaling",
+        "rest": "Rest",
+        "personal": "Personal"
+      },
+      "statuses": {
+        "planned": "Planned",
+        "active": "Active",
+        "completed": "Completed",
+        "skipped": "Skipped",
+        "cancelled": "Cancelled"
+      },
+      "flexibilities": {
+        "fixed": "Fixed",
+        "flexible": "Flexible",
+        "approximate": "Approximate"
+      },
+      "windows": {
+        "morning": "Morning",
+        "afternoon": "Afternoon",
+        "evening": "Evening",
+        "after_meal": "After meal"
+      },
+      "form": {
+        "type": "Type",
+        "flexibility": "Flexibility",
+        "label": "Label",
+        "labelPlaceholder": "e.g. Morning deep work",
+        "start": "Planned start (optional)",
+        "duration": "Estimated duration (minutes)",
+        "badDuration": "Enter a whole number of minutes greater than zero.",
+        "badStart": "Enter an exact local start time (HH:MM).",
+        "window": "Time window (optional)",
+        "windowNone": "No specific window",
+        "note": "Note (optional)",
+        "submit": "Add block",
+        "submitEdit": "Save changes",
+        "needLabel": "A label helps you recognize the block.",
+        "weekly": "Repeats weekly",
+        "repeatDays": "Repeat on",
+        "needDays": "Select at least one weekday.",
+        "needStartRecurring": "Recurring blocks need an exact start time.",
+        "recurrenceNotice": "You are editing the weekly rule. Changes apply to future occurrences; completed and skipped history is preserved.",
+        "recurrenceLoadFailed": "The weekly rule could not be loaded, so this block cannot be saved.",
+        "windowNotStored": "Time-of-day windows are not stored on weekly rules."
+      },
+      "reactivate": {
+        "title": "Reactivate block",
+        "schedule": "Schedule",
+        "once": "Once",
+        "recurring": "Weekly",
+        "weekday": "Start on",
+        "start": "Start time (HH:MM)",
+        "duration": "Duration (minutes)",
+        "submit": "Reactivate block"
+      },
+      "task": {
+        "enable": "Work on a task",
+        "pick": "Task",
+        "none": "No task",
+        "empty": "No eligible tasks.",
+        "loadFailed": "The task list could not be loaded.",
+        "workOnLabel": "Work on {{title}}"
+      }
+    },
+    "session": {
+      "title": "Session",
+      "start": "Start session",
+      "saveFinish": "Save finish",
+      "outcomeAria": "Session outcome",
+      "outcomePlaceholder": "What did you accomplish?",
+      "nextStepAria": "Next step",
+      "nextStepPlaceholder": "Next step (optional)",
+      "history": {
+        "empty": "No sessions yet.",
+        "notStarted": "Not started",
+        "until": "until",
+        "next": "Next:"
+      },
+      "statuses": {
+        "planned": "Planned",
+        "started": "Started",
+        "finished": "Finished",
+        "paused": "Paused",
+        "skipped": "Skipped"
+      }
+    },
+    "ritual": {
+      "title": "Planning ritual · {{date}}",
+      "steps": {
+        "unblocked": "Review unblocked tasks",
+        "blocked": "Review blocked tasks",
+        "confirm": "Confirm today's selection",
+        "planning": "Planning block and intention"
+      },
+      "unblockedIntro": "Unblocked tasks, ordered by priority and approaching deadlines. Select the ones you want to address today.",
+      "unblockedEmpty": "No unblocked tasks to recommend.",
+      "blockedIntro": "Blocked tasks are shown separately. They are not recommended until their blockers are resolved.",
+      "blockedEmpty": "Nothing is blocked right now.",
+      "blockingNote": "Blocking note: {{note}}",
+      "blockedByDependency": "Blocked by an incomplete dependency.",
+      "confirmIntro": "Confirm today's selection. Selecting a task never changes its deadline.",
+      "selectionEmpty": "Nothing selected yet.",
+      "reasonFor": "Reason for {{title}}",
+      "reasons": {
+        "next_action": "Next action",
+        "priority": "Priority",
+        "deadline": "Deadline",
+        "dependency": "Dependency",
+        "manual": "Manual"
+      },
+      "capacityHint": "Capacity hint: a focus window is available from {{start}} to {{end}}.",
+      "capacityHintPreferred_one": "Capacity hint: a focus window is available from {{start}} to {{end}} (preferred {{countDisplay}} minute).",
+      "capacityHintPreferred_other": "Capacity hint: a focus window is available from {{start}} to {{end}} (preferred {{countDisplay}} minutes).",
+      "capacityNotePrefill": "Suggested focus window: {{start}} – {{end}}.",
+      "capacityNotePrefillEnergy": "Suggested focus window: {{start}} – {{end}} ({{energy}}).",
+      "intention": "Intention note",
+      "intentionPlaceholder": "What matters most about today?",
+      "capacityNote": "Capacity note",
+      "planningBlockLabel": "Daily planning",
+      "finishHelp": "Finishing creates a planning block for {{date}} and saves the intention.",
+      "finish": "Finish planning"
+    }
+  },
+  "analytics": {
+    "title": "Habit analytics",
+    "subtitle": "Read-only history of your recurring routines.",
+    "range": {
+      "from": "From date",
+      "to": "To date",
+      "invalid": "The range start date cannot be after its end date.",
+      "showing": "Showing dates {{from}} – {{to}}"
+    },
+    "empty": "No recurring routines in this workspace yet.",
+    "unnamedRoutine": "Unnamed routine",
+    "outOfRangeLabelNote": "No scheduled days fall in this range; the name shown is the routine's current name.",
+    "coverage": {
+      "since": "In use since {{date}}",
+      "paused": "Paused {{from}} → {{until}}",
+      "unknown": "No recorded usage in this range."
+    },
+    "unrecordedNote": "Not recorded means no result was recorded for a scheduled day. It is not a record of failure.",
+    "rate": {
+      "display": "{{completed}} of {{scheduled}} scheduled — {{percent}}%",
+      "hidden": "No schedulable days in this period yet."
+    },
+    "definition": "Completed out of all scheduled days, excluding cancelled/withdrawn days and days outside the routine's active schedule or version window. 'Not recorded' means no result was recorded for a scheduled day.",
+    "counts": {
+      "scheduled": "Scheduled",
+      "completed": "Completed",
+      "started": "Started (not completed)",
+      "skipped": "Skipped / expired",
+      "cancelled": "Cancelled / withdrawn",
+      "unrecorded": "Not recorded"
+    },
+    "trend": {
+      "title": "Weekly trend",
+      "weekStarting": "Week starting"
+    },
+    "reviewRoutine": "Review or edit routine"
+  },
+  "calendar": {
+    "title": "Calendar",
+    "weekView": "Week view",
+    "monthView": "Month view",
+    "legend": {
+      "dailyPlan": "Daily plan",
+      "blocks": "Blocks",
+      "deadlines": "Deadlines"
+    },
+    "dots": {
+      "plan": "Plan",
+      "blocks": "Blocks",
+      "deadline": "Deadline"
+    }
+  },
+  "goals": {
+    "title": "Goals",
+    "new": "New goal",
+    "subtitle": "Meaningful directions. Progress includes direct tasks and the leaves of the projects linked to each goal.",
+    "empty": "No goals yet. Start with a direction you want to make real.",
+    "detailTitle": "Goal",
+    "editTitle": "Edit goal",
+    "successDefinition": "Success definition",
+    "linkedProjects": "Linked projects",
+    "linkedProjectsEmpty": "No projects linked to this goal yet.",
+    "directTasks": "Direct tasks",
+    "directTasksEmpty": "No direct tasks yet. Small goals can use tasks without a project.",
+    "addProject": "Add project",
+    "addDirectTask": "Add direct task",
+    "attachTaskDescription": "Attach a leaf task that already exists so it counts as a direct task of this goal.",
+    "attachProjectDescription": "Link a project that already exists so it contributes to this goal.",
+    "layoutGroupLabel": "List layout",
+    "layoutList": "List",
+    "layoutColumns": "Two columns",
+    "layoutTiles": "Tiles",
+    "form": {
+      "submit": "Save goal",
+      "createSubmit": "Create goal",
+      "description": "Description (Markdown)",
+      "why": "Why it matters (Markdown)",
+      "success": "Success definition (Markdown)"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "new": "New project",
+    "subtitle": "Bounded results you can divide into tasks. Progress comes from completed leaf tasks weighted by effort points.",
+    "empty": "No projects yet. Create one to turn a goal into actionable work.",
+    "detailTitle": "Project",
+    "editTitle": "Edit project",
+    "linkedToGoalNote": "This project will be linked to the goal you came from.",
+    "definitionOfDone": "Definition of done",
+    "addTask": "Add task",
+    "attachTaskDescription": "Attach a leaf task that already exists so it contributes to this project.",
+    "taskTreeEmpty": "No tasks yet. Add the first task to start making progress.",
+    "searchLabel": "Search projects",
+    "searchPlaceholder": "Search projects…",
+    "addExistingEmpty": "No eligible projects to link.",
+    "layoutGroupLabel": "List layout",
+    "layoutList": "List",
+    "layoutColumns": "Two columns",
+    "layoutTiles": "Tiles",
+    "layoutGroupLabel": "List layout",
+    "form": {
+      "submit": "Save project",
+      "createSubmit": "Create project",
+      "description": "Description (Markdown)",
+      "why": "Why it matters (Markdown)",
+      "dod": "Definition of done (Markdown)"
+    }
+  },
+  "tasks": {
+    "title": "Tasks",
+    "listTitle": "Tasks",
+    "new": "New task",
+    "empty": "No tasks yet. Create one to capture an action.",
+    "detailTitle": "Task",
+    "editTitle": "Edit task",
+    "create": {
+      "newTitle": "New task",
+      "newInProject": "New task in {{project}}",
+      "goalLinkNote": "This task will be linked directly to the goal it belongs to.",
+      "newChild": "New child task",
+      "projectLoadingContext": "The project context is still loading. Please try again."
+    },
+    "childrenArchived": "Children archived",
+    "reopen": "Reopen task",
+    "changeStatus": "Change status",
+    "changeStatusPlaceholder": "Change status…",
+    "blockingNote": "Blocking note",
+    "blockingNotePlaceholder": "Blocking note (required when no dependency)",
+    "archiveSubtree": "Archive subtree",
+    "restoreSubtree": "Restore subtree",
+    "archiveSubtreeHint": "Archives only the completed children",
+    "delete": "Delete task",
+    "confirmDelete": "Confirm delete",
+    "closureReason": "Closure reason",
+    "prerequisites": "Prerequisites",
+    "createChild": "Create child task",
+    "addChild": "Add child task",
+    "archived": "Archived",
+    "blockedByPrerequisite": "Blocked by an open prerequisite",
+    "searchLabel": "Search tasks",
+    "searchPlaceholder": "Search tasks…",
+    "addExistingEmpty": "No eligible tasks to attach.",
+    "pointsSuffix": "{{points}}p",
+    "effortSize": "Effort size",
+    "effortNotSet": "Not set",
+    "scheduledDate": "Scheduled date",
+    "dependenciesLoading": "Loading dependencies…",
+    "addPrerequisite": "Add prerequisite task",
+    "selectPrerequisite": "Select a prerequisite…",
+    "noPrerequisites": "No prerequisites defined.",
+    "notBlocked": "This task is not blocked by any open prerequisite.",
+    "whyBlocked": "Why is this blocked?",
+    "layoutGroupLabel": "List layout",
+    "layoutList": "List",
+    "layoutColumns": "Two columns",
+    "layoutTiles": "Tiles",
+    "controlsLabel": "Task controls",
+    "sortLabel": "Sort",
+    "sortCreated": "Created",
+    "sortProximity": "Deadline proximity",
+    "sortImportance": "Importance",
+    "sortDifficulty": "Difficulty",
+    "sortAscending": "Sort ascending",
+    "sortDescending": "Sort descending",
+    "filterLabel": "Filter",
+    "filterAll": "All tasks",
+    "filterOpen": "Open",
+    "filterCompleted": "Completed",
+    "filterOverdue": "Overdue",
+    "groupLabel": "Group",
+    "groupNone": "No grouping",
+    "groupProject": "By project",
+    "groupGoal": "By goal",
+    "groupNested": "Goal → project",
+    "ungrouped": "Unassigned",
+    "noMatchingTasks": "No tasks match these filters.",
+    "form": {
+      "submit": "Save task",
+      "createSubmit": "Create task",
+      "createChildSubmit": "Create child task",
+      "description": "Description (Markdown)",
+      "notes": "Notes (Markdown)"
+    },
+    "matrix": {
+      "title": "Priority and effort matrix",
+      "corner": "Effort / Priority",
+      "hint": "Selecting a cell stores the effort size and priority separately. Large and critical tasks suggest dividing them.",
+      "recommendation": {
+        "whenSpace": "When there is space",
+        "plan": "Plan",
+        "addressSoon": "Address soon",
+        "addressToday": "Address today",
+        "pending": "Pending",
+        "prioritize": "Prioritize",
+        "immediatePriority": "Immediate priority",
+        "divideAndPrioritize": "Divide and prioritize",
+        "divideAndAddress": "Divide and address",
+        "divide": "Divide",
+        "urgentlyDivide": "Urgently divide"
+      }
+    }
+  },
+  "journal": {
+    "title": "Journal",
+    "new": "New entry",
+    "empty": "No journal entries yet. Write your first entry for today.",
+    "selectAll": "Select all",
+    "deselectAll": "Deselect all",
+    "setExportable": "Set Exportable",
+    "setPrivate": "Set Private",
+    "archiveSelected": "Archive selected",
+    "exportable": "Exportable",
+    "private": "Private",
+    "selectedCount_one": "{{count}} selected",
+    "selectedCount_other": "{{count}} selected",
+    "listedCount_one": "{{count}} listed",
+    "listedCount_other": "{{count}} listed",
+    "selectEntryAria": "Select {{title}}",
+    "archiveConfirm_one": "Archive {{count}} selected journal entry?",
+    "archiveConfirm_other": "Archive {{count}} selected journal entries?",
+    "archived_one": "Archived {{count}} journal entry.",
+    "archived_other": "Archived {{count}} journal entries.",
+    "markedExportable_one": "Marked {{count}} journal entry as Exportable.",
+    "markedExportable_other": "Marked {{count}} journal entries as Exportable.",
+    "markedPrivate_one": "Marked {{count}} journal entry as Private.",
+    "markedPrivate_other": "Marked {{count}} journal entries as Private.",
+    "newTitle": "New journal entry",
+    "editTitle": "Edit journal entry",
+    "detailTitle": "Journal entry",
+    "linkedItems": "Linked items",
+    "olderEntry": "← Older entry",
+    "newerEntry": "Newer entry →",
+    "form": {
+      "saveSubmit": "Save entry",
+      "createSubmit": "Create entry",
+      "date": "Date",
+      "content": "Content (Markdown)",
+      "mood": "Mood",
+      "moodPlaceholder": "e.g. calm, tired",
+      "energy": "Energy",
+      "energyPlaceholder": "e.g. low, high",
+      "emotions": "Emotions",
+      "emotionsPlaceholder": "e.g. calm, grateful, tired",
+      "emotionsHelp": "Free text, any words you choose. Separate multiple emotions with commas.",
+      "template": "Journal template",
+      "templateFallbackOption": "Foundation journal (1.0.1)",
+      "exportableHelp": "Entries always stay local and private on this computer. Exportable only allows this entry to be included when you explicitly export it; it never makes the entry public. Disabling this prevents the entry from being exported."
+    },
+    "templateField": {
+      "select": "Select…"
+    },
+    "reference": {
+      "loading": "Loading references…",
+      "empty": "No linked items yet.",
+      "entityTypeAria": "Reference entity type",
+      "entityIdAria": "Reference entity ID",
+      "entityIdPlaceholder": "Entity ID",
+      "relationAria": "Reference relation",
+      "entityTypes": {
+        "task": "Task",
+        "project": "Project",
+        "goal": "Goal",
+        "block": "Block",
+        "session": "Session"
+      },
+      "relations": {
+        "mentions": "Mentions",
+        "related_to": "Related to",
+        "reflects_on": "Reflects on",
+        "result_of": "Result of"
+      }
+    },
+    "export": {
+      "title": "Export journal",
+      "selected": "Selected entries",
+      "empty": "No journal entries yet.",
+      "exportAllNote": "All journal entries, no date limits. Days without entries are not included.",
+      "defaultTitle": "Journal export"
+    }
+  },
+  "therapy": {
+    "title": "Therapy",
+    "privacyBanner": "Privacy mode: therapy records are kept separate from the executive dashboard and are not included in generic exports.",
+    "isolationNote": "This area is kept separate from the executive dashboard. Therapy content is never shown in task views or included in a generic project export.",
+    "newCollection": "New collection",
+    "collectionNamePlaceholder": "Collection name",
+    "collections": "Collections",
+    "collectionsEmpty": "No therapy collections yet.",
+    "layoutGroupLabel": "Therapy list layout",
+    "layoutList": "List",
+    "layoutColumns": "Two columns",
+    "layoutTiles": "Tiles",
+    "collection": "Collection",
+    "collectionFallbackTitle": "Therapy collection",
+    "invalidCollectionId": "Invalid collection ID.",
+    "addRecord": "Add record",
+    "recordsEmpty": "No records in this collection yet.",
+    "recordDetailTitle": "Therapy record",
+    "newRecordTitle": "New therapy record",
+    "editRecordTitle": "Edit therapy record",
+    "createRecordSubmit": "Create record",
+    "linkedTasks": "Linked tasks",
+    "recordTypes": {
+      "note": "Note",
+      "exercise": "Exercise",
+      "session_note": "Session note",
+      "resource": "Resource",
+      "reflection": "Reflection"
+    },
+    "recordStatuses": {
+      "open": "Open",
+      "in_progress": "In progress",
+      "completed": "Completed",
+      "archived": "Archived"
+    },
+    "form": {
+      "type": "Type",
+      "occurredOn": "Occurred on",
+      "content": "Content (Markdown)",
+      "saveSubmit": "Save record"
+    },
+    "reference": {
+      "taskId": "Task ID",
+      "taskIdPlaceholder": "task-uuid",
+      "relation": "Relation",
+      "note": "Note (optional)",
+      "add": "Add reference",
+      "empty": "No linked tasks yet.",
+      "needTaskId": "Please enter a task ID.",
+      "taskLoading": "Loading tasks…",
+      "taskEmpty": "No tasks available to link.",
+      "taskLoadError": "The task list could not be loaded.",
+      "relations": {
+        "supports": "Supports",
+        "prompted_by": "Prompted by",
+        "evidence_for": "Evidence for",
+        "related_to": "Related to"
+      }
+    },
+    "export": {
+      "title": "Export therapy records",
+      "intro": "Therapy records are private. This export is explicit and scoped to the selected records only.",
+      "selected": "Selected records",
+      "empty": "No therapy records yet.",
+      "exportAllNote": "All therapy records, no date limits.",
+      "confirmPrivacy": "I understand this export may contain private therapy content and I want to proceed.",
+      "noDate": "no date",
+      "defaultTitle": "Therapy export"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "subtitle": "Gentle local reminders for planning, focus, journaling, deadlines, and review. Each rule can be turned off independently, and a missed reminder never marks work as failed.",
+    "permission": {
+      "aria": "Notification permission",
+      "title": "Desktop permission",
+      "checking": "Checking notification permission…",
+      "granted": "Notifications are allowed on this device.",
+      "notGranted": "Notifications are not allowed yet.",
+      "denied": "Notifications were denied. Re-enable them in Windows notification settings.",
+      "unavailable": "Permission status is only available while running inside the desktop app.",
+      "request": "Request notification permission"
+    },
+    "privacyNote": "Privacy boundary: notifications show only the lock-screen-safe message configured per rule below. Task titles, journal excerpts, and therapy content are never included.",
+    "rulesLoading": "Loading rules…",
+    "rulesEmpty": "No reminder rules found for this workspace yet.",
+    "types": {
+      "planning": "Daily planning",
+      "focus": "Focus block",
+      "journaling": "Journaling",
+      "review": "Weekly review",
+      "deadline": "Deadline check"
+    },
+    "channels": {
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "both": "Desktop and mobile"
+    },
+    "escalations": {
+      "none": "No escalation",
+      "gentle": "Gentle follow-up"
+    },
+    "deliveryStatuses": {
+      "scheduled": "Scheduled",
+      "delivered": "Delivered",
+      "snoozed": "Snoozed",
+      "dismissed": "Dismissed",
+      "failed": "Failed"
+    },
+    "rule": {
+      "formAria": "{{type}} reminder settings",
+      "enableAria": "Enable {{type}} reminders",
+      "enabled": "Enabled",
+      "sentToday_one": "{{count}} reminder sent today",
+      "sentToday_other": "{{count}} reminders sent today",
+      "sentNone": "no reminders sent today",
+      "preferredTime": "Preferred time",
+      "preferredTimeHelp": "Empty means reminders may arrive any time outside quiet hours.",
+      "quietStart": "Quiet hours start",
+      "quietEnd": "Quiet hours end",
+      "quietEndHelp": "Overnight quiet windows (start later than end) are supported.",
+      "deadlineWindow": "Deadline notification lead window (days)",
+      "deadlineWindowHelp": "Deadline alerts look ahead 1–7 days (default 3). Dashboard warnings use the separate workspace setting.",
+      "maxPerDay": "Max reminders per day",
+      "snooze": "Snooze options (minutes)",
+      "snoozeHelp": "Comma-separated durations, each {{min}}–{{max}} minutes, up to {{options}} options.",
+      "safeMessage": "Privacy-safe message",
+      "safeMessageHelp": "This is the only text a notification may show. It is lock-screen safe and never combined with task titles, journal excerpts, or therapy content.",
+      "saveSubmit": "Save rule",
+      "saved": "Rule saved.",
+      "dailyLimitError": "The daily reminder limit must be between 0 and {{max}}.",
+      "deadlineWindowError": "The deadline notification window must be between 1 and 7 days.",
+      "quietHoursError": "The quiet hours need different start and end times. Overnight windows are supported.",
+      "snoozeWholeError": "Snooze options must be whole numbers of minutes.",
+      "snoozeRangeError": "Snooze minutes must be between {{min}} and {{max}}.",
+      "snoozeDuplicateError": "Snooze options must not contain duplicate durations.",
+      "snoozeCountError": "A reminder rule can configure at most {{options}} snooze options.",
+      "safeMessageRequired": "A privacy-safe notification message is required.",
+      "safeMessageTooLong": "The privacy-safe message is too long (maximum {{max}} characters)."
+    },
+    "history": {
+      "aria": "Notification history",
+      "title": "Recent notifications",
+      "privacyNote": "Only lock-screen-safe reminder text is shown here. Task titles, journal excerpts, and therapy content never appear in this list.",
+      "loading": "Loading notifications…",
+      "empty": "No notifications have been scheduled yet.",
+      "rowLabel": "Notification: {{message}}.",
+      "rowLabelTarget": "Notification: {{message}}. Activate to navigate to {{entity}}.",
+      "scheduled": "Scheduled {{date}}",
+      "delivered": "delivered {{date}}",
+      "snoozeAction": "Snooze {{minutes}} min",
+      "clear": "Clear",
+      "clearAria": "Clear notification history",
+      "clearConfirm": "Clear all notification history? This only removes the in-app history; future scheduled deliveries are kept.",
+      "cleared_one": "Cleared {{count}} history item.",
+      "cleared_other": "Cleared {{count}} history items."
+    },
+    "consent": {
+      "title": "Allow desktop notifications?",
+      "body": "Albada would like to show gentle local reminders for planning, focus, journaling, deadlines, and review. Choosing “Allow notifications” will also open the Windows permission prompt.",
+      "privacy": "Your privacy stays intact: notification messages are lock-screen safe and generic. They never include task titles, journal excerpts, or therapy content, and everything stays on this computer.",
+      "allow": "Allow notifications",
+      "requesting": "Requesting permission…",
+      "notNow": "Not now",
+      "later": "You can change this later in Settings → Notifications."
+    }
+  },
+  "import": {
+    "fingerprintLabel": "Fingerprint:",
+    "entityTypes": {
+      "journal_entry": "Journal entry",
+      "therapy_record": "Therapy record",
+      "task": "Task",
+      "goal": "Goal",
+      "project": "Project",
+      "note": "Note"
+    },
+    "decisions": {
+      "ignore": "Ignore"
+    },
+    "confidence": {
+      "high": "High confidence",
+      "medium": "Medium confidence",
+      "low": "Low confidence",
+      "review": "Needs review"
+    },
+    "report": {
+      "aria": "Import report for {{sourceRoot}}",
+      "title": "Import report",
+      "source": "Source:",
+      "status": "Status:",
+      "summary": "Summary",
+      "nothingImported": "Nothing was imported.",
+      "warnings": "Warnings",
+      "showWarnings": "Show warnings ({{count}})",
+      "hideWarnings": "Hide warnings ({{count}})",
+      "noWarnings": "No warnings.",
+      "reviewItems": "Items to review ({{count}})",
+      "reviewEmpty": "No items need review.",
+      "untitled": "(untitled)",
+      "decision": "Decision",
+      "decisionSelect": "Select…",
+      "decisionAria": "Decision for {{title}}",
+      "accept": "Accept",
+      "reject": "Reject",
+      "placeholderNotice": "Review decisions are not saved yet. Accept, Reject, and Edit will be enabled in a later phase."
+    }
+  }
+}

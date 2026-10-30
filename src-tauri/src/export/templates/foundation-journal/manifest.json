@@ -1,0 +1,39 @@
+{
+  "id": "foundation-journal",
+  "version": "1.0.1",
+  "display_name": "Foundation journal",
+  "locale": "en",
+  "description": "The bundled structured journal template.",
+  "min_app_version": "0.1.0",
+  "fields": [
+    {
+      "id": "entry.emotions",
+      "field_type": "multi_select",
+      "required": true,
+      "options": ["calm", "joy", "sadness", "anger", "anxiety", "gratitude"]
+    },
+    {
+      "id": "entry.mood",
+      "field_type": "single_select",
+      "required": true,
+      "options": ["low", "neutral", "good", "high"]
+    },
+    { "id": "entry.energy", "field_type": "bounded_scale", "required": true }
+  ],
+  "sections": [
+    {
+      "id": "entry",
+      "heading": "Entry",
+      "fields": ["entry.emotions", "entry.mood", "entry.energy"]
+    }
+  ],
+  "cleanup": {
+    "remove_comments": true,
+    "remove_guide_blockquotes": true,
+    "remove_response_markers": true,
+    "remove_placeholders": true,
+    "remove_images": true,
+    "remove_empty_day_markers": true
+  },
+  "files": ["manifest.json", "schema.json", "template.md"]
+}

@@ -1,0 +1,62 @@
+[package]
+name = "albada"
+version = "0.1.0"
+description = "A local-first personal planning and journaling application"
+edition = "2021"
+license = "AGPL-3.0-or-later"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "albada_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2.8.1"
+tauri-plugin-notification = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.34", features = ["bundled", "uuid", "chrono", "backup"] }
+uuid = { version = "1", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+chrono-tz = "0.10"
+log = { version = "0.4", features = ["std", "alloc"] }
+# Content checksums for export artifacts. Both are already present in the
+# dependency graph; declared directly so the export worker can hash written
+# files with a stable, standard algorithm (SHA-256, hex-encoded).
+sha2 = "0.10"
+hex = "0.4"
+# Markdown parser for the export AST. Pinned to 0.13.4 (MIT, MSRV 1.71.1) and
+# built without default features (no CLI binary, no HTML renderer) since the
+# export path only needs the event stream.
+pulldown-cmark = { version = "=0.13.4", default-features = false }
+# Embedded Typst compiler for PDF export. Pinned to the exact 0.15.1 release so
+# the installer has no PATH/executable dependency. typst-syntax and
+# typst-library are declared directly for their file/source and library types;
+# typst-pdf produces the PDF byte stream; typst-assets supplies compiler
+# support assets, while the sandbox loads only its explicit OFL font allowlist.
+# Third-party license and notice inventory for these pinned crates is
+# maintained in ../THIRD-PARTY-NOTICES.md; owner review of the font/asset
+# and MPL-2.0 notices remains open before release.
+typst = "=0.15.1"
+typst-syntax = "=0.15.1"
+typst-library = "=0.15.1"
+typst-pdf = "=0.15.1"
+typst-assets = "=0.15.1"
+# Supporting crates required to name the compiler's output types directly:
+# typst-layout provides `PagedDocument` (the `typst::compile` output type) and
+# typst-utils provides `LazyHash` used by the `World` trait signature.
+typst-layout = "=0.15.1"
+typst-utils = "=0.15.1"
+tauri-plugin-os = "2.4.0"
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.61.3", features = ["Win32_Globalization", "Win32_System_Com"] }

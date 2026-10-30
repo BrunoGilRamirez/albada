@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Albada",
+  "version": "0.1.0",
+  "identifier": "io.github.brunogilramirez.albada",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist",
+    "windows": {
+      "staticVCRuntime": true
+    }
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Albada",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 900,
+        "minHeight": 600,
+        "resizable": true,
+        "backgroundColor": "#020617"
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "msi"],
+    "windows": {
+      "wix": {
+        "language": "en-US"
+      },
+      "nsis": {
+        "languages": ["English"],
+        "compression": "lzma"
+      }
+    },
+    "icon": [
+      "icons/joi-tauri-icons/5-aurora-glow/icons/32x32.png",
+      "icons/joi-tauri-icons/5-aurora-glow/icons/128x128.png",
+      "icons/joi-tauri-icons/5-aurora-glow/icons/128x128@2x.png",
+      "icons/joi-tauri-icons/5-aurora-glow/icons/icon.icns",
+      "icons/joi-tauri-icons/5-aurora-glow/icons/icon.ico"
+    ]
+  }
+}
