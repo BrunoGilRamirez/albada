@@ -38,12 +38,12 @@ data. See [SECURITY.md](./SECURITY.md).
 ## Contributor License Agreement
 
 - A **CLA will be required before any pull request can be merged**. You retain the
-  copyright in your contributions; the CLA grants the project's maintainer
-  the license rights needed to distribute and maintain the project.
-- **Initial draft status.** The project currently publishes only a
-  [`CLA-DRAFT.md`](./CLA-DRAFT.md) adoption notice. It is too early to ask
-  contributors to sign it: the final project-specific text still requires
-  legal review, and no pull request is CLA-approved yet.
+  copyright in your contributions; the provisional [`CLA.md`](./CLA.md) grants
+  the individual maintainer the rights needed to distribute and maintain the
+  project.
+- **Provisional status.** The agreement is operational through CLA Assistant,
+  but it is intentionally subject to later professional legal review. A future
+  version may require contributors to accept updated terms.
 - **Base templates.** The project CLA will be based on the official Project
   Harmony templates: the **Harmony Individual Contributor License Agreement
   v1.0** and the **Harmony Entity Contributor License Agreement v1.0** (the
@@ -52,18 +52,25 @@ data. See [SECURITY.md](./SECURITY.md).
   <https://www.harmonyagreements.org/docs/ha-cla-i-v1.pdf>. Entity/corporate
   template (PDF): <https://www.harmonyagreements.org/docs/ha-cla-e-v1.pdf>.
   The maintainer and rights recipient named in the project CLA is
-  **Bruno Gil Ramírez / Albada**.
-- **Status.** The draft and template selection are informational only. The
-  final legal text is not yet approved or effective.
+  **Bruno Gil Ramírez**, an individual. Albada is the project name, not a legal
+  entity.
+- **Status.** The former planning draft is retained in
+  [`CLA-DRAFT.md`](./CLA-DRAFT.md); the provisional agreement is effective only
+  when accepted through the signing workflow.
 - **Tooling.** CLA Assistant has been selected to manage CLA signing. It is
   **not active yet**; once activated, it will prompt authors on their first
   pull request and record the signatures.
 - **Sign-off.** A commit sign-off (`Signed-off-by`) is optional good practice
   but is **not** a substitute for the CLA.
 
+Albada currently accepts individual contributions only. If an employer or
+other entity owns the proposed contribution, do not submit it under the
+individual agreement; contact the maintainer first. An entity agreement may be
+added after the project has a suitable legal structure.
+
 ## Governance
 
-The maintainer (Bruno Gil Ramírez / Albada) reviews and merges all
+The maintainer (Bruno Gil Ramírez, for the Albada project) reviews and merges all
 contributions. Contribution handling is voluntary and best-effort, with **no
 service-level agreement**, and contributions that conflict with the product
 direction may be declined. Sensitive attachments are not accepted: never

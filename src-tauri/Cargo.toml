@@ -44,8 +44,8 @@ pulldown-cmark = { version = "=0.13.4", default-features = false }
 # typst-pdf produces the PDF byte stream; typst-assets supplies compiler
 # support assets, while the sandbox loads only its explicit OFL font allowlist.
 # Third-party license and notice inventory for these pinned crates is
-# maintained in ../THIRD-PARTY-NOTICES.md; owner review of the font/asset
-# and MPL-2.0 notices remains open before release.
+# maintained in ../THIRD-PARTY-NOTICES.md; the staged notices were approved
+# for this alpha snapshot and are also bundled as installer resources.
 typst = "=0.15.1"
 typst-syntax = "=0.15.1"
 typst-library = "=0.15.1"

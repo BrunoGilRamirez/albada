@@ -31,6 +31,16 @@
   "bundle": {
     "active": true,
     "targets": ["nsis", "msi"],
+    "resources": [
+      "../LICENSE",
+      "../NOTICE",
+      "../THIRD-PARTY-NOTICES.md",
+      "../third-party/typst-assets/LICENSE",
+      "../third-party/typst-assets/NOTICE",
+      "../third-party/icu4x/LICENSE",
+      "../third-party/unicode-ident/LICENSE-UNICODE",
+      "../third-party/MPL-2.0.txt"
+    ],
     "windows": {
       "wix": {
         "language": "en-US"

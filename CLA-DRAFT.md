@@ -1,10 +1,11 @@
-# Albada Contributor License Agreement — Draft
+# Albada Contributor License Agreement — Superseded Draft
 
-> Status: draft only. This document is not a contributor agreement, is not
-> effective, and must not be signed or used to approve a pull request.
+> This historical planning note is superseded by [`CLA.md`](./CLA.md). It is
+> retained to explain the original Harmony-based selection and must not be
+> signed.
 
-Albada is preparing a project-specific Contributor License Agreement for
-contributions to the public repository. The project intends to use the
+Albada prepared a provisional project-specific Contributor License Agreement
+for contributions to the public repository. The project used the
 official Project Harmony Contributor License Agreement templates as its base:
 
 - [Harmony Individual Contributor License Agreement v1.0](https://www.harmonyagreements.org/docs/ha-cla-i-v1.pdf)
@@ -15,22 +16,19 @@ The intended project choices are:
 
 - Contributors retain ownership of their contributions.
 - The project maintainer and rights recipient will be identified as Bruno Gil
-  Ramírez / Albada.
+  Ramírez, an individual. Albada is the project name, not a legal entity.
 - The outbound software license is intended to remain
   `AGPL-3.0-or-later`.
-- Individual and entity contribution paths will be supported.
+- Only individual contributions will be supported for now. An entity agreement
+  may be added after the project has a suitable legal structure.
 - A contribution may be merged only after the final agreement is approved and
   the contribution check is active.
 
-The final text still requires project-specific legal review, including the
-selected Harmony options, the identity of the rights recipient, governing-law
-details, contribution-submission mechanics, and the treatment of
-documentation and other media. CLA Assistant is selected for the future
-workflow but is not active yet.
+The provisional agreement uses an individual-only path, AGPL-3.0-or-later for
+covered contributions, and leaves governing law for later professional review.
 
-Until this draft is replaced by an approved agreement and the workflow is
-activated, no contributor should sign this draft and no pull request should
-be represented as CLA-approved.
+This note is not the operative agreement. Contributors must read and accept
+`CLA.md` through the configured signing workflow instead.
 
 ---
 
