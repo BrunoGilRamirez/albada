@@ -28,3 +28,12 @@ src-tauri/target/
 *.njsproj
 *.sln
 *.sw?
+
+# Optional local AI-assisted development environment. The public project
+# contract lives in AGENTS.md; tool-specific configuration is maintained in
+# the separate Albada Agent Environment repository.
+.opencode/
+.agents/
+opencode.json
+.mcp.json
+skills-lock.json

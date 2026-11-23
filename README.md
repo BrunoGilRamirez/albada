@@ -64,6 +64,19 @@ React UI -> typed Tauri command boundary -> Rust domain and repositories -> SQLi
 See [`docs/architecture.md`](./docs/architecture.md) for the data-boundary
 overview and [`docs/setup.md`](./docs/setup.md) for build instructions.
 
+## AI-Assisted Development
+
+Albada is developed with AI-assisted tools. The creator's public agent
+environment, including its agents, model routing, skills, and configuration
+history, is maintained separately in the
+[Albada Agent Environment](https://github.com/BrunoGilRamirez/albada-agent-environment)
+repository.
+
+That environment is informative and optional. Contributors may use OpenCode,
+Codex, Claude, local models, other tools, or no AI tools at all. Contributions
+are evaluated by the project contract, code quality, tests, and review—not by
+the tool used to produce them.
+
 ## Repository Layout
 
 | Path          | Contents                                                            |

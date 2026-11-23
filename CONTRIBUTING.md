@@ -20,6 +20,16 @@ databases, backups, journal entries, therapy content, exported personal
 records, or screenshots containing them. Reproduce problems with synthetic
 data. See [SECURITY.md](./SECURITY.md).
 
+## AI-Assisted Contributions
+
+Albada does not require OpenCode, Codex, Claude, Copilot, a specific model, or
+any AI tool. Contributors may work manually or use their own workflow.
+
+If you use an agent, follow the public [`AGENTS.md`](./AGENTS.md) contract.
+The creator's optional and auditable development environment is documented in
+the [Albada Agent Environment](https://github.com/BrunoGilRamirez/albada-agent-environment)
+repository.
+
 ## Ground Rules
 
 - Project code, documentation, commit messages, issue/PR text, and test names
